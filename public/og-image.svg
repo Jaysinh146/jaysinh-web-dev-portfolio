@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1220"/>
+      <stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <path d="M-20 430 C 240 250, 520 720, 820 480 C 980 350, 1120 260, 1260 320 L 1260 680 L -20 680 Z" fill="url(#accent)"/>
+
+  <g transform="translate(96, 120)">
+    <rect width="104" height="104" rx="26" fill="rgba(255,255,255,0.07)"/>
+    <text x="52" y="72" text-anchor="middle" font-family="Poppins, ui-sans-serif, system-ui, -apple-system" font-size="56" font-weight="600" fill="#ffffff">J</text>
+  </g>
+
+  <text x="96" y="290" font-family="Poppins, ui-sans-serif, system-ui, -apple-system" font-size="64" font-weight="600" fill="#ffffff">Jaysinh</text>
+  <text x="96" y="360" font-family="Raleway, ui-sans-serif, system-ui, -apple-system" font-size="34" font-weight="400" fill="#cbd5e1">Web Developer &amp; Designer</text>
+  <text x="96" y="435" font-family="Raleway, ui-sans-serif, system-ui, -apple-system" font-size="28" font-weight="400" fill="#94a3b8">Premium websites that convert.</text>
+</svg>

@@ -42,12 +42,33 @@ const projects = [
 ];
 
 const LiveWebsiteCard = ({ project }: { project: typeof projects[0] }) => {
+  const [canHover, setCanHover] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    if (isHovered) {
+    const mq = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const update = () => setCanHover(mq.matches);
+
+    update();
+    if (mq.addEventListener) {
+      mq.addEventListener("change", update);
+    } else {
+      mq.addListener(update);
+    }
+
+    return () => {
+      if (mq.removeEventListener) {
+        mq.removeEventListener("change", update);
+      } else {
+        mq.removeListener(update);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isHovered && canHover) {
       intervalRef.current = setInterval(() => {
         setScrollY((prev) => {
           const newVal = prev + 1;
@@ -66,7 +87,7 @@ const LiveWebsiteCard = ({ project }: { project: typeof projects[0] }) => {
         clearInterval(intervalRef.current);
       }
     };
-  }, [isHovered]);
+  }, [isHovered, canHover]);
 
   return (
     <motion.a
@@ -74,7 +95,7 @@ const LiveWebsiteCard = ({ project }: { project: typeof projects[0] }) => {
       target="_blank"
       rel="noopener noreferrer"
       className="group block premium-card overflow-hidden h-full"
-      onMouseEnter={() => setIsHovered(true)}
+      onMouseEnter={() => canHover && setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       whileHover={{ y: -4 }}
       transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
