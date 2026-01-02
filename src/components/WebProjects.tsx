@@ -1,3 +1,4 @@
+import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { AnimatedSection } from "./AnimatedSection";
 
@@ -40,6 +41,110 @@ const projects = [
   },
 ];
 
+const LiveWebsiteCard = ({ project }: { project: typeof projects[0] }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    if (isHovered) {
+      intervalRef.current = setInterval(() => {
+        setScrollY((prev) => {
+          const newVal = prev + 1;
+          return newVal > 300 ? 0 : newVal;
+        });
+      }, 30);
+    } else {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+      setScrollY(0);
+    }
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [isHovered]);
+
+  return (
+    <motion.a
+      href={project.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group block premium-card overflow-hidden h-full"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      whileHover={{ y: -4 }}
+      transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+    >
+      {/* Live Website Preview */}
+      <div className="relative h-48 md:h-56 overflow-hidden bg-muted">
+        <div
+          className="absolute inset-0 transition-transform duration-100 ease-linear"
+          style={{ transform: `translateY(-${scrollY}px)` }}
+        >
+          <iframe
+            src={project.url}
+            title={project.name}
+            className="w-full pointer-events-none"
+            style={{
+              height: "800px",
+              transform: "scale(0.5)",
+              transformOrigin: "top left",
+              width: "200%",
+            }}
+            loading="lazy"
+            sandbox="allow-scripts allow-same-origin"
+          />
+        </div>
+        
+        {/* Overlay gradient */}
+        <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent opacity-60" />
+        
+        {/* Hover overlay */}
+        <div className={`absolute inset-0 bg-foreground/5 transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`} />
+      </div>
+
+      {/* Card Content */}
+      <div className="p-5">
+        <div className="flex items-start justify-between mb-3">
+          <span className="text-xs text-muted-foreground tracking-wide uppercase">
+            {project.category}
+          </span>
+          <svg
+            className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-all transform group-hover:translate-x-1 group-hover:-translate-y-1"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={1.5}
+              d="M7 17L17 7M17 7H7M17 7v10"
+            />
+          </svg>
+        </div>
+
+        <h3 className="font-poppins text-lg font-medium mb-2 tracking-premium">
+          {project.name}
+        </h3>
+        <p className="text-sm text-muted-foreground leading-relaxed">
+          {project.description}
+        </p>
+
+        <div className="mt-4 pt-3 border-t border-border/50">
+          <span className="text-xs text-muted-foreground group-hover:text-foreground transition-colors">
+            View Project →
+          </span>
+        </div>
+      </div>
+    </motion.a>
+  );
+};
+
 export const WebProjects = () => {
   return (
     <section id="work" className="section-spacing">
@@ -51,7 +156,7 @@ export const WebProjects = () => {
           <h2 className="font-poppins text-xl md:text-2xl font-light mb-4 tracking-premium">
             Websites that work
           </h2>
-          <p className="text-body max-w-lg mb-16">
+          <p className="text-body max-w-lg mb-12">
             Clean UX. Business clarity. Conversion-focused layouts built for real results.
           </p>
         </AnimatedSection>
@@ -59,46 +164,7 @@ export const WebProjects = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
             <AnimatedSection key={project.name} delay={index * 0.1}>
-              <motion.a
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group block premium-card p-6 h-full"
-                whileHover={{ y: -4 }}
-                transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-              >
-                <div className="flex items-start justify-between mb-4">
-                  <span className="text-xs text-muted-foreground tracking-wide uppercase">
-                    {project.category}
-                  </span>
-                  <svg
-                    className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors transform group-hover:translate-x-1 group-hover:-translate-y-1"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={1.5}
-                      d="M7 17L17 7M17 7H7M17 7v10"
-                    />
-                  </svg>
-                </div>
-
-                <h3 className="font-poppins text-lg font-medium mb-2 tracking-premium">
-                  {project.name}
-                </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {project.description}
-                </p>
-
-                <div className="mt-6 pt-4 border-t border-border/50">
-                  <span className="text-xs text-muted-foreground group-hover:text-foreground transition-colors">
-                    View Project →
-                  </span>
-                </div>
-              </motion.a>
+              <LiveWebsiteCard project={project} />
             </AnimatedSection>
           ))}
         </div>

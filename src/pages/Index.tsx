@@ -6,8 +6,10 @@ import { FullStackApps } from "@/components/FullStackApps";
 import { VideoShowcase } from "@/components/VideoShowcase";
 import { Psychology } from "@/components/Psychology";
 import { Services } from "@/components/Services";
+import { Resume } from "@/components/Resume";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
+import { ScrollToTop } from "@/components/ScrollToTop";
 
 const Index = () => {
   return (
@@ -20,8 +22,10 @@ const Index = () => {
       <VideoShowcase />
       <Psychology />
       <Services />
+      <Resume />
       <Contact />
       <Footer />
+      <ScrollToTop />
     </div>
   );
 };
