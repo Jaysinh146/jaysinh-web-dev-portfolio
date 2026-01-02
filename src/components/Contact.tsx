@@ -19,7 +19,7 @@ export const Contact = () => {
 
         <AnimatedSection delay={0.2}>
           <motion.a
-            href="mailto:hello@jaysinh.dev"
+            href="mailto:patankararyan7@gmail.com"
             className="inline-flex items-center gap-2 mt-8 px-8 py-4 bg-background text-foreground rounded-full text-sm font-medium tracking-wide transition-all hover:scale-105"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
@@ -44,7 +44,7 @@ export const Contact = () => {
         <AnimatedSection delay={0.3}>
           <div className="flex justify-center gap-8 mt-16">
             <a
-              href="https://twitter.com/jaysinh"
+              href="https://x.com/jaysinh146"
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm opacity-60 hover:opacity-100 transition-opacity"
@@ -52,7 +52,7 @@ export const Contact = () => {
               Twitter
             </a>
             <a
-              href="https://linkedin.com/in/jaysinh"
+              href="https://www.linkedin.com/in/jaysinh-patankar-b6a648253/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm opacity-60 hover:opacity-100 transition-opacity"
@@ -60,12 +60,12 @@ export const Contact = () => {
               LinkedIn
             </a>
             <a
-              href="https://github.com/jaysinh"
+              href="https://www.instagram.com/aryanpatankar146/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm opacity-60 hover:opacity-100 transition-opacity"
             >
-              GitHub
+              Instagram
             </a>
           </div>
         </AnimatedSection>

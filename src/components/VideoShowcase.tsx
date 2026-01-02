@@ -5,7 +5,7 @@ import { AnimatedSection } from "./AnimatedSection";
 const videos = [
   { id: "lbPF1cufito", type: "short" },
   { id: "eg35evUinI4", type: "short" },
-  { id: "-zKPd-M66KI", type: "short" },
+  { id: "Tl-R1SBWzV0", type: "short" },
   { id: "wzz5XLZLfpI", type: "short" },
   { id: "TppPp2wQNuw", type: "short" },
   { id: "I3YpGt-_YXo", type: "short" },
