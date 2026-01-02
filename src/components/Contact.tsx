@@ -1,0 +1,75 @@
+import { motion } from "framer-motion";
+import { AnimatedSection } from "./AnimatedSection";
+
+export const Contact = () => {
+  return (
+    <section id="contact" className="section-spacing bg-foreground text-background">
+      <div className="container-narrow text-center">
+        <AnimatedSection>
+          <p className="text-sm uppercase tracking-wide-premium mb-6 opacity-60">
+            Let's Talk
+          </p>
+          <h2 className="font-poppins text-2xl md:text-3xl lg:text-4xl font-light mb-6 tracking-premium">
+            Let's build something that feels{" "}
+            <span className="font-accent text-3xl md:text-4xl lg:text-5xl">premium</span>
+            <br />
+            and performs.
+          </h2>
+        </AnimatedSection>
+
+        <AnimatedSection delay={0.2}>
+          <motion.a
+            href="mailto:hello@jaysinh.dev"
+            className="inline-flex items-center gap-2 mt-8 px-8 py-4 bg-background text-foreground rounded-full text-sm font-medium tracking-wide transition-all hover:scale-105"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            Get in touch
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.5}
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
+              />
+            </svg>
+          </motion.a>
+        </AnimatedSection>
+
+        <AnimatedSection delay={0.3}>
+          <div className="flex justify-center gap-8 mt-16">
+            <a
+              href="https://twitter.com/jaysinh"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm opacity-60 hover:opacity-100 transition-opacity"
+            >
+              Twitter
+            </a>
+            <a
+              href="https://linkedin.com/in/jaysinh"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm opacity-60 hover:opacity-100 transition-opacity"
+            >
+              LinkedIn
+            </a>
+            <a
+              href="https://github.com/jaysinh"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm opacity-60 hover:opacity-100 transition-opacity"
+            >
+              GitHub
+            </a>
+          </div>
+        </AnimatedSection>
+      </div>
+    </section>
+  );
+};
