@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import profileImage from "@/assets/profile.png";
-import { FloatingTestimonials } from "./FloatingTestimonials";
 
 export const Hero = () => {
   return (
@@ -72,29 +71,28 @@ export const Hero = () => {
             </motion.div>
           </div>
 
-          {/* Profile Image with Floating Testimonials */}
+          {/* Profile Image with Glow */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.4, 0, 0.2, 1] }}
             className="lg:col-span-5 order-1 lg:order-2"
           >
-            <div className="relative max-w-[280px] mx-auto lg:max-w-[400px] lg:ml-auto">
-              {/* Floating Testimonials Background */}
-              <div className="absolute -inset-12 lg:-inset-20">
-                <FloatingTestimonials />
-              </div>
+            <div className="relative max-w-[280px] mx-auto lg:max-w-[320px] lg:ml-auto">
+              {/* Subtle glow effect */}
+              <div className="absolute -inset-4 bg-gradient-to-br from-muted-foreground/10 via-muted/20 to-transparent rounded-3xl blur-2xl" />
+              <div className="absolute -inset-2 bg-gradient-to-tr from-transparent via-muted-foreground/5 to-muted/15 rounded-2xl blur-xl" />
               
-              {/* Profile Image */}
-              <div className="relative z-10">
-                <div className="absolute inset-0 bg-gradient-to-br from-muted/50 to-transparent rounded-2xl transform rotate-3 scale-105" />
-                <img
-                  src={profileImage}
-                  alt="Jaysinh"
-                  className="relative rounded-2xl w-full object-cover shadow-xl shadow-black/5 max-w-[280px] lg:max-w-[320px] mx-auto"
-                  style={{ aspectRatio: "4/5" }}
-                />
-              </div>
+              {/* Background accent */}
+              <div className="absolute inset-0 bg-gradient-to-br from-muted/50 to-transparent rounded-2xl transform rotate-3 scale-105" />
+              
+              {/* Profile image */}
+              <img
+                src={profileImage}
+                alt="Jaysinh"
+                className="relative rounded-2xl w-full object-cover shadow-xl shadow-black/10"
+                style={{ aspectRatio: "4/5" }}
+              />
             </div>
           </motion.div>
         </div>
