@@ -1,7 +1,18 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import profileImage from "@/assets/profile.png";
 
 export const Hero = () => {
+  const [showLion, setShowLion] = useState(false);
+  const [animationKey, setAnimationKey] = useState(0);
+
+  const handleSinhInteraction = () => {
+    setShowLion(true);
+    setAnimationKey(prev => prev + 1);
+    // Hide after animation completes
+    setTimeout(() => setShowLion(false), 600);
+  };
+
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
       <div className="container-wide">
@@ -17,7 +28,34 @@ export const Hero = () => {
                 Web Developer & Designer
               </p>
               <h1 className="text-hero mb-8">
-                Hi, I'm <span className="font-medium">Jaysinh</span>.
+                Hi, I'm{" "}
+                <span className="font-medium inline-flex items-center">
+                  Jay
+                  <span
+                    className="cursor-pointer relative inline-flex items-center"
+                    onMouseEnter={handleSinhInteraction}
+                    onClick={handleSinhInteraction}
+                  >
+                    sinh
+                    {/* Lion emoji easter egg */}
+                    <AnimatePresence>
+                      {showLion && (
+                        <motion.span
+                          key={animationKey}
+                          initial={{ opacity: 0, scale: 0.5, y: 5 }}
+                          animate={{ opacity: 1, scale: 1, y: 0 }}
+                          exit={{ opacity: 0, scale: 0.5, y: -5 }}
+                          transition={{ duration: 0.15 }}
+                          className="absolute -right-8 top-1/2 -translate-y-1/2 text-lg animate-lion-tilt"
+                          style={{ filter: "grayscale(0%)" }}
+                        >
+                          🦁
+                        </motion.span>
+                      )}
+                    </AnimatePresence>
+                  </span>
+                </span>
+                .
               </h1>
               <p className="text-hero leading-relaxed">
                 I'm a web developer who understands{" "}
@@ -92,6 +130,21 @@ export const Hero = () => {
                 alt="Jaysinh"
                 className="relative rounded-2xl w-full object-cover shadow-xl shadow-black/10"
                 style={{ aspectRatio: "4/5" }}
+              />
+
+              {/* Animated gradient glow at bottom */}
+              <div 
+                className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-3/4 h-8 rounded-full blur-xl animate-glow-spread"
+                style={{
+                  background: "linear-gradient(90deg, transparent, #f472b6, #ef4444, #f472b6, transparent)",
+                }}
+              />
+              <div 
+                className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1/2 h-4 rounded-full blur-lg animate-glow-spread"
+                style={{
+                  background: "linear-gradient(90deg, transparent, #ec4899, #f43f5e, #ec4899, transparent)",
+                  animationDelay: "0.5s",
+                }}
               />
             </div>
           </motion.div>

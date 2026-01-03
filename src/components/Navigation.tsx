@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { LionIcon } from "./LionIcon";
+import { motion, AnimatePresence } from "framer-motion";
 
 export const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [showLion, setShowLion] = useState(false);
+  const [animationKey, setAnimationKey] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -12,6 +13,12 @@ export const Navigation = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleSinhInteraction = () => {
+    setShowLion(true);
+    setAnimationKey(prev => prev + 1);
+    setTimeout(() => setShowLion(false), 600);
+  };
 
   return (
     <motion.nav
@@ -26,12 +33,31 @@ export const Navigation = () => {
     >
       <div className="container-wide">
         <div className="flex items-center justify-between h-16 md:h-20">
-          <a href="#" className="font-poppins text-sm font-medium tracking-wide flex items-center gap-1.5 group">
-            {/* Easter egg: Lion appears before name on hover */}
-            <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 -ml-5 group-hover:ml-0">
-              <LionIcon size={14} />
+          <a href="#" className="font-poppins text-sm font-medium tracking-wide inline-flex items-center">
+            Jay
+            <span
+              className="cursor-pointer relative inline-flex items-center"
+              onMouseEnter={handleSinhInteraction}
+              onClick={handleSinhInteraction}
+            >
+              sinh
+              {/* Lion emoji easter egg */}
+              <AnimatePresence>
+                {showLion && (
+                  <motion.span
+                    key={animationKey}
+                    initial={{ opacity: 0, scale: 0.5, y: 2 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.5, y: -2 }}
+                    transition={{ duration: 0.15 }}
+                    className="absolute -right-5 top-1/2 -translate-y-1/2 text-xs animate-lion-tilt"
+                  >
+                    🦁
+                  </motion.span>
+                )}
+              </AnimatePresence>
             </span>
-            Jaysinh.
+            .
           </a>
 
           <div className="hidden md:flex items-center gap-8">
