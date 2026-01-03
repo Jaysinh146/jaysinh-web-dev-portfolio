@@ -79,7 +79,7 @@ export const VideoShowcase = () => {
         <AnimatedSection delay={0.3}>
           <div className="mt-12 text-center">
             <a
-              href="https://drive.google.com/drive/folders/your-folder-id"
+              href="https://drive.google.com/drive/folders/1d_jPrsh8Q7lWL2z2wNeLbDjdlqF3DfSN?usp=drive_link"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors link-underline"
