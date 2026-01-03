@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Navigation } from "@/components/Navigation";
 import { Hero } from "@/components/Hero";
 import { Skills } from "@/components/Skills";
@@ -10,23 +11,29 @@ import { Resume } from "@/components/Resume";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { ScrollToTop } from "@/components/ScrollToTop";
+import { Preloader } from "@/components/Preloader";
 
 const Index = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
   return (
-    <div className="min-h-screen">
-      <Navigation />
-      <Hero />
-      <Skills />
-      <WebProjects />
-      <FullStackApps />
-      <VideoShowcase />
-      <Psychology />
-      <Services />
-      <Resume />
-      <Contact />
-      <Footer />
-      <ScrollToTop />
-    </div>
+    <>
+      {isLoading && <Preloader onComplete={() => setIsLoading(false)} />}
+      <div className={`min-h-screen ${isLoading ? "overflow-hidden" : ""}`}>
+        <Navigation />
+        <Hero />
+        <Skills />
+        <WebProjects />
+        <FullStackApps />
+        <VideoShowcase />
+        <Psychology />
+        <Services />
+        <Resume />
+        <Contact />
+        <Footer />
+        <ScrollToTop />
+      </div>
+    </>
   );
 };
 
