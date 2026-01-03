@@ -46,6 +46,7 @@ const LiveWebsiteCard = ({ project }: { project: typeof projects[0] }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const cardRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
     const mq = window.matchMedia("(hover: hover) and (pointer: fine)");
@@ -91,13 +92,14 @@ const LiveWebsiteCard = ({ project }: { project: typeof projects[0] }) => {
 
   return (
     <motion.a
+      ref={cardRef}
       href={project.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group block premium-card overflow-hidden h-full"
+      className="group block premium-card overflow-hidden h-full touch-none"
       onMouseEnter={() => canHover && setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      whileHover={{ y: -4 }}
+      whileHover={canHover ? { y: -4 } : {}}
       transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
     >
       {/* Live Website Preview */}
