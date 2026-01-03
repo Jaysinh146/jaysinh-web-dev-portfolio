@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { LionIcon } from "./LionIcon";
 
 export const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -25,7 +26,11 @@ export const Navigation = () => {
     >
       <div className="container-wide">
         <div className="flex items-center justify-between h-16 md:h-20">
-          <a href="#" className="font-poppins text-sm font-medium tracking-wide">
+          <a href="#" className="font-poppins text-sm font-medium tracking-wide flex items-center gap-1.5 group">
+            {/* Easter egg: Lion appears before name on hover */}
+            <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 -ml-5 group-hover:ml-0">
+              <LionIcon size={14} />
+            </span>
             Jaysinh.
           </a>
 
