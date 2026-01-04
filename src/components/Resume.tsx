@@ -92,38 +92,6 @@ export const Resume = () => {
               </AnimatedSection>
             ))}
           </div>
-
-          {/* Available to join immediately */}
-          <AnimatedSection delay={0.6}>
-            <div className="relative flex items-center justify-center mt-12">
-              {/* Bottom dot */}
-              <div className="absolute left-4 md:left-1/2 -translate-x-1/2 z-10">
-                <motion.div
-                  className="w-4 h-4 rounded-full bg-foreground"
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.8 }}
-                  style={{
-                    boxShadow: "0 0 15px hsl(var(--foreground) / 0.6), 0 0 30px hsl(var(--foreground) / 0.4)"
-                  }}
-                />
-              </div>
-              
-              {/* Available text */}
-              <motion.div
-                className="ml-12 md:ml-0 md:absolute md:left-1/2 md:-translate-x-1/2 md:mt-8"
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 1 }}
-              >
-                <p className="text-sm font-medium tracking-wide uppercase text-foreground/80">
-                  Available to join immediately
-                </p>
-              </motion.div>
-            </div>
-          </AnimatedSection>
         </div>
       </div>
     </section>
