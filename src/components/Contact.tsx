@@ -39,6 +39,26 @@ export const Contact = () => {
               />
             </svg>
           </motion.a>
+          <motion.a
+            href="#work"
+            className="inline-flex items-center gap-2 mt-4 text-sm opacity-60 hover:opacity-100 transition-opacity"
+            whileHover={{ x: 4 }}
+          >
+            See my work
+            <svg
+              className="w-3 h-3"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.5}
+                d="M19 14l-7 7m0 0l-7-7m7 7V3"
+              />
+            </svg>
+          </motion.a>
         </AnimatedSection>
 
         <AnimatedSection delay={0.3}>
