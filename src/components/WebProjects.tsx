@@ -91,16 +91,14 @@ const LiveWebsiteCard = ({ project }: { project: typeof projects[0] }) => {
   }, [isHovered, canHover]);
 
   return (
-    <motion.a
+    <a
       ref={cardRef}
       href={project.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="group block premium-card overflow-hidden h-full touch-none"
+      className="group block premium-card overflow-hidden h-full"
       onMouseEnter={() => canHover && setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      whileHover={canHover ? { y: -4 } : {}}
-      transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
     >
       {/* Live Website Preview */}
       <div className="relative h-48 md:h-56 overflow-hidden bg-muted">
@@ -164,7 +162,7 @@ const LiveWebsiteCard = ({ project }: { project: typeof projects[0] }) => {
           </span>
         </div>
       </div>
-    </motion.a>
+    </a>
   );
 };
 
