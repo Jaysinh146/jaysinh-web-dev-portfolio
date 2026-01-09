@@ -42,16 +42,16 @@ export const Navigation = () => {
               Work
             </a>
             <a
+              href="#apps"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors link-underline"
+            >
+              Web Apps
+            </a>
+            <a
               href="#video"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors link-underline"
             >
               Video
-            </a>
-            <a
-              href="#services"
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors link-underline"
-            >
-              Services
             </a>
             <a
               href="#contact"

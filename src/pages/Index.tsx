@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Navigation } from "@/components/Navigation";
 import { Hero } from "@/components/Hero";
-import { Skills } from "@/components/Skills";
+import { TechStack } from "@/components/TechStack";
 import { WebProjects } from "@/components/WebProjects";
 import { FullStackApps } from "@/components/FullStackApps";
+import { OpenSource } from "@/components/OpenSource";
 import { VideoShowcase } from "@/components/VideoShowcase";
 import { Psychology } from "@/components/Psychology";
 import { Services } from "@/components/Services";
@@ -22,9 +23,10 @@ const Index = () => {
       <div className={`min-h-screen ${isLoading ? "overflow-hidden" : ""}`}>
         <Navigation />
         <Hero />
-        <Skills />
+        <TechStack />
         <WebProjects />
         <FullStackApps />
+        <OpenSource />
         <VideoShowcase />
         <Psychology />
         <Services />
