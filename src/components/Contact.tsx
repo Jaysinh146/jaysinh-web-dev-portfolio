@@ -62,7 +62,13 @@ export const Contact = () => {
         </AnimatedSection>
 
         <AnimatedSection delay={0.3}>
-          <div className="flex justify-center gap-8 mt-16">
+          <div className="flex flex-wrap justify-center gap-6 md:gap-8 mt-16">
+            <a
+              href="tel:+919561593047"
+              className="text-sm opacity-60 hover:opacity-100 transition-opacity"
+            >
+              +91 9561593047
+            </a>
             <a
               href="https://x.com/jaysinh146"
               target="_blank"
