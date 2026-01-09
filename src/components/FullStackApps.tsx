@@ -164,7 +164,7 @@ const AppPreviewCard = ({ app }: { app: typeof apps[number] }) => {
 
 export const FullStackApps = () => {
   return (
-    <section className="section-spacing bg-secondary/30">
+    <section id="apps" className="section-spacing bg-secondary/30">
       <div className="container-wide">
         <AnimatedSection>
           <p className="text-subtle uppercase tracking-wide-premium mb-4">
