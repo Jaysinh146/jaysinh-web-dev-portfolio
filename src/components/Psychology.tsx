@@ -2,20 +2,20 @@ import { AnimatedSection } from "./AnimatedSection";
 
 const principles = [
   {
-    title: "Attention",
-    description: "Capturing focus in the first 3 seconds",
+    title: "Scalability",
+    description: "Building systems that handle growth seamlessly",
   },
   {
-    title: "Trust",
-    description: "Building credibility through design language",
+    title: "Clean Architecture",
+    description: "Maintainable, well-structured codebases",
   },
   {
-    title: "Hierarchy",
-    description: "Guiding eyes to what matters most",
+    title: "API Design",
+    description: "RESTful endpoints with proper authentication",
   },
   {
-    title: "Intent",
-    description: "Understanding what visitors actually want",
+    title: "Performance",
+    description: "Optimized applications that load fast and run smooth",
   },
 ];
 
@@ -28,10 +28,10 @@ export const Psychology = () => {
             Philosophy
           </p>
           <h2 className="font-poppins text-xl md:text-2xl font-light mb-6 tracking-premium text-center">
-            Websites that <span className="font-accent text-3xl">convert</span>
+            Engineering that <span className="font-accent text-3xl">scales</span>
           </h2>
           <p className="text-body text-center max-w-xl mx-auto mb-16">
-            I don't just design websites. I understand the psychology behind why people click, trust, and buy.
+            I don't just write code. I build production-ready systems with clean architecture and scalable APIs.
           </p>
         </AnimatedSection>
 
@@ -57,7 +57,7 @@ export const Psychology = () => {
 
         <AnimatedSection delay={0.4}>
           <p className="text-center text-sm text-muted-foreground mt-16 max-w-md mx-auto">
-            Every element is intentional. Every layout is tested. Every website is built to perform.
+            Every API is documented. Every component is reusable. Every application is built to perform.
           </p>
         </AnimatedSection>
       </div>

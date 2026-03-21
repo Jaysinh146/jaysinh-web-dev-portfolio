@@ -3,16 +3,16 @@ import { AnimatedSection } from "./AnimatedSection";
 
 const milestones = [
   {
-    title: "Web Developer",
+    title: "Video Editor",
     company: "Ucove Digital",
     period: "Jun 2024 - Jan 2025",
-    description: "First internship building responsive web applications",
+    description: "Creating engaging video content and ad creatives for digital campaigns",
   },
   {
-    title: "Video Editor & Web Developer",
+    title: "Full Stack Developer",
     company: "SilverBridge360",
     period: "Jun 2025 - Nov 2025",
-    description: "Creating content and developing web solutions",
+    description: "Building scalable web applications with React, Node.js, and REST APIs",
   },
 ];
 
@@ -30,7 +30,6 @@ export const Resume = () => {
         </AnimatedSection>
 
         <div className="relative">
-          {/* Timeline line with glow */}
           <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-border to-transparent">
             <motion.div
               className="absolute inset-0 w-full bg-gradient-to-b from-foreground/20 via-foreground/40 to-foreground/20"
@@ -45,12 +44,10 @@ export const Resume = () => {
             />
           </div>
 
-          {/* Milestones */}
           <div className="space-y-12">
             {milestones.map((milestone, index) => (
               <AnimatedSection key={index} delay={index * 0.2}>
                 <div className={`relative flex items-center gap-6 md:gap-12 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
-                  {/* Milestone dot with glow */}
                   <div className="absolute left-4 md:left-1/2 -translate-x-1/2 z-10">
                     <motion.div
                       className="w-3 h-3 rounded-full bg-foreground"
@@ -64,7 +61,6 @@ export const Resume = () => {
                     />
                   </div>
 
-                  {/* Content */}
                   <div className={`ml-12 md:ml-0 md:w-1/2 ${index % 2 === 0 ? 'md:pr-16 md:text-right' : 'md:pl-16'}`}>
                     <motion.div
                       className="premium-card p-6"
@@ -86,7 +82,6 @@ export const Resume = () => {
                     </motion.div>
                   </div>
 
-                  {/* Spacer for alternating layout */}
                   <div className="hidden md:block md:w-1/2" />
                 </div>
               </AnimatedSection>

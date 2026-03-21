@@ -27,25 +27,13 @@ const projects = [
     url: "https://shopvayo.com/",
     category: "Fashion",
   },
-  {
-    name: "Hilwitz",
-    description: "AI marketplace startup platform",
-    url: "https://hilwitz.com/",
-    category: "Startup",
-  },
-  {
-    name: "Dashly",
-    description: "Hyperlocal delivery application",
-    url: "https://dashly.hilwitz.com/",
-    category: "App",
-  },
 ];
 
 const LiveWebsiteCard = ({ project }: { project: typeof projects[0] }) => {
   const [canHover, setCanHover] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [scrollY, setScrollY] = useState(0);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const cardRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
@@ -100,7 +88,6 @@ const LiveWebsiteCard = ({ project }: { project: typeof projects[0] }) => {
       onMouseEnter={() => canHover && setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Live Website Preview */}
       <div className="relative h-48 md:h-56 overflow-hidden bg-muted">
         <div
           className="absolute inset-0 transition-transform duration-100 ease-linear"
@@ -120,15 +107,10 @@ const LiveWebsiteCard = ({ project }: { project: typeof projects[0] }) => {
             sandbox="allow-scripts allow-same-origin"
           />
         </div>
-        
-        {/* Overlay gradient */}
         <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent opacity-60" />
-        
-        {/* Hover overlay */}
         <div className={`absolute inset-0 bg-foreground/5 transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`} />
       </div>
 
-      {/* Card Content */}
       <div className="p-5">
         <div className="flex items-start justify-between mb-3">
           <span className="text-xs text-muted-foreground tracking-wide uppercase">
@@ -175,14 +157,14 @@ export const WebProjects = () => {
             Client Work
           </p>
           <h2 className="font-poppins text-xl md:text-2xl font-light mb-4 tracking-premium">
-            Websites that work
+            Deployed production-ready applications
           </h2>
           <p className="text-body max-w-lg mb-12">
             Clean UX. Business clarity. Conversion-focused layouts built for real results.
           </p>
         </AnimatedSection>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6">
           {projects.map((project, index) => (
             <AnimatedSection key={project.name} delay={index * 0.1}>
               <LiveWebsiteCard project={project} />
