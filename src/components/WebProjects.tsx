@@ -33,7 +33,7 @@ const LiveWebsiteCard = ({ project }: { project: typeof projects[0] }) => {
   const [canHover, setCanHover] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [scrollY, setScrollY] = useState(0);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const cardRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
