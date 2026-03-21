@@ -14,18 +14,19 @@ export const Hero = () => {
               transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
             >
               <p className="text-subtle uppercase tracking-wide-premium mb-8">
-                Web Developer & Designer
+                Full-Stack Software Engineer
               </p>
               <h1 className="text-hero mb-8">
                 Hi, I'm <span className="font-medium">Jaysinh</span>.
               </h1>
               <p className="text-hero leading-relaxed">
-                I'm a web developer who understands{" "}
-                <span className="font-accent text-2xl md:text-3xl lg:text-4xl">design</span>,
-                <br className="hidden md:block" /> customer psychology,
-                and builds premium websites
-                <br className="hidden md:block" /> that{" "}
-                <span className="font-medium">convert</span>.
+                I build{" "}
+                <span className="font-accent text-2xl md:text-3xl lg:text-4xl">scalable</span>{" "}
+                web applications
+                <br className="hidden md:block" /> with React & Node.js,
+                and deploy production-ready
+                <br className="hidden md:block" /> systems that{" "}
+                <span className="font-medium">perform</span>.
               </p>
             </motion.div>
 
@@ -35,7 +36,7 @@ export const Hero = () => {
               transition={{ duration: 0.6, delay: 0.3, ease: [0.4, 0, 0.2, 1] }}
               className="flex flex-wrap gap-3 text-subtle pt-4"
             >
-              {["Web", "Full-Stack", "Video", "Design", "Ads"].map((skill, index) => (
+              {["React", "Node.js", "REST APIs", "MongoDB", "Full-Stack"].map((skill, index) => (
                 <span key={skill} className="flex items-center gap-3">
                   <span className="tracking-wide">{skill}</span>
                   {index < 4 && <span className="w-1 h-1 rounded-full bg-muted-foreground/40" />}
@@ -46,8 +47,20 @@ export const Hero = () => {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.45, ease: [0.4, 0, 0.2, 1] }}
+              className="pt-2"
+            >
+              <span className="inline-flex items-center gap-2 text-xs tracking-wide text-muted-foreground/70 border border-border/40 rounded-full px-4 py-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-green-500/80 animate-pulse" />
+                Open to Remote Opportunities (Global)
+              </span>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.5, ease: [0.4, 0, 0.2, 1] }}
-              className="pt-4"
+              className="pt-2"
             >
               <a
                 href="#contact"
@@ -79,14 +92,9 @@ export const Hero = () => {
             className="lg:col-span-5 order-1 lg:order-2"
           >
             <div className="relative max-w-[280px] mx-auto lg:max-w-[320px] lg:ml-auto">
-              {/* Subtle glow effect */}
               <div className="absolute -inset-4 bg-gradient-to-br from-muted-foreground/10 via-muted/20 to-transparent rounded-3xl blur-2xl" />
               <div className="absolute -inset-2 bg-gradient-to-tr from-transparent via-muted-foreground/5 to-muted/15 rounded-2xl blur-xl" />
-              
-              {/* Background accent */}
               <div className="absolute inset-0 bg-gradient-to-br from-muted/50 to-transparent rounded-2xl transform rotate-3 scale-105" />
-              
-              {/* Profile image */}
               <img
                 src={profileImage}
                 alt="Jaysinh"

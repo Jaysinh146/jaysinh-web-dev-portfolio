@@ -2,20 +2,20 @@ import { AnimatedSection } from "./AnimatedSection";
 
 const services = [
   {
+    title: "Full-Stack Web Applications",
+    description: "Scalable apps with React, Node.js & REST APIs",
+  },
+  {
+    title: "API Development",
+    description: "RESTful APIs with JWT authentication & MongoDB",
+  },
+  {
     title: "Website Design & Development",
     description: "Premium, conversion-focused websites",
   },
   {
-    title: "Full-Stack Web Applications",
-    description: "Custom apps with robust architecture",
-  },
-  {
     title: "Video Editing",
     description: "Short-form content & ad creatives",
-  },
-  {
-    title: "Brand & Visual Design",
-    description: "Identity systems that resonate",
   },
 ];
 

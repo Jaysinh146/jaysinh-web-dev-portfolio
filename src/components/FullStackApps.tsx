@@ -6,17 +6,17 @@ const apps = [
   {
     name: "Cheril",
     tagline: "Peer-to-peer rental marketplace",
-    description: "A platform enabling free peer-to-peer rentals, reducing waste and building community trust.",
+    description: "A platform enabling free peer-to-peer rentals, reducing waste and building community trust. Built scalable REST APIs with Node.js and MongoDB.",
     url: "https://cheril.netlify.app/",
-    tech: ["React", "Node.js", "MongoDB"],
+    tech: ["React", "Node.js", "MongoDB", "REST API"],
     role: "Full-Stack Development",
   },
   {
     name: "LinkedLabs",
     tagline: "Scientific equipment rentals",
-    description: "Connecting research labs with shared equipment resources, making science more accessible.",
+    description: "Connecting research labs with shared equipment resources. Worked with MongoDB & MySQL, deployed production-ready applications.",
     url: "https://linkedlabs.netlify.app/",
-    tech: ["React", "Express", "PostgreSQL"],
+    tech: ["React", "Express.js", "MongoDB", "JWT Auth"],
     role: "Full-Stack Development",
   },
 ];
@@ -174,7 +174,7 @@ export const FullStackApps = () => {
             Products with purpose
           </h2>
           <p className="text-body max-w-lg mb-16">
-            Problem-solving applications built with product thinking and clean architecture.
+            Problem-solving applications built with React, Node.js, and clean architecture.
           </p>
         </AnimatedSection>
 
