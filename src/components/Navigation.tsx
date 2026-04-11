@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { LionIcon } from "./LionIcon";
 
 export const Navigation = () => {
@@ -47,12 +48,12 @@ export const Navigation = () => {
             >
               Web Apps
             </a>
-            <a
-              href="#video"
+            <Link
+              to="/video-editor"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors link-underline"
             >
               Video
-            </a>
+            </Link>
             <a
               href="#contact"
               className="text-sm font-medium"
