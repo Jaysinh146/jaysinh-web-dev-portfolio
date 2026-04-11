@@ -17,36 +17,81 @@ const shortVideos = [
   { id: "DvLbM0ahY4Y", label: "AI Video" },
   { id: "rzjQygTCkzE" },
   { id: "vBHGfe8mtAM" },
-  { id: "iSDvMjQBjSA" },
-  { id: "vPswiUOVcLg" },
+  { id: "OY7L41xb98E", label: "AI" },
 ];
 
-// Client cards with drive links
 const clients = [
   {
-    name: "Ucove Digital",
-    role: "Ad Creatives & Reels",
-    description: "Social media ad creatives and promotional video content for digital campaigns.",
-    driveLink: "https://drive.google.com/drive/folders/1d_jPrsh8Q7lWL2z2wNeLbDjdlqF3DfSN?usp=drive_link",
+    name: "ISHITA SALUJA",
+    label: "Ishita Saluja · 1.5M Instagram",
+    tag: "Reels · Short Form",
+    links: [
+      { text: "View Drive Folder", url: "https://drive.google.com/drive/folders/1OLgARQPp3TTw7frnIhkAzHvaD5ugUDZ-?usp=sharing" },
+      { text: "Watch on YouTube", url: "https://youtu.be/EMDB7awyR6Y" }
+    ]
   },
   {
-    name: "Monarch Media House",
-    role: "Brand Films & Edits",
-    description: "High-quality brand films, event coverage, and cinematic edits.",
-    driveLink: "https://drive.google.com/drive/folders/1d_jPrsh8Q7lWL2z2wNeLbDjdlqF3DfSN?usp=drive_link",
+    name: "IMAGINATION INC.",
+    label: "Imagination Inc. · Interior Design Studio",
+    tag: "Brand Video · Reels",
+    links: [
+      { text: "Preview Video 1", url: "https://drive.google.com/file/d/1n1xuUmWPw7es6anW-6B1ibShBknUqC73/view" },
+      { text: "Preview Video 2", url: "https://drive.google.com/file/d/1vHuC9SG7hP55a8YfM_nQ07MdItfLAxVQ/view" },
+      { text: "Horizontal Reel", url: "https://drive.google.com/file/d/1ZT9jRem2sA9mosPYuH3E1CfYppdZXyQx/view" }
+    ]
   },
   {
-    name: "SilverBridge360",
-    role: "Social Media Content",
-    description: "Managed and created engaging social media video content and marketing materials.",
-    driveLink: "https://drive.google.com/drive/folders/1d_jPrsh8Q7lWL2z2wNeLbDjdlqF3DfSN?usp=drive_link",
+    name: "VANDAN PANDIT",
+    label: "Vandan Pandit · AI Generated Content",
+    tag: "AI Video · Reels",
+    links: [
+      { text: "Preview Video 1", url: "https://drive.google.com/file/d/1_ZtaIi5h946acLblbi3zF6z7J-gdgH6f/view" },
+      { text: "Preview Video 2", url: "https://drive.google.com/file/d/1l4iBp4fTOoF13bnClDchhwvVVvi-t0uI/view" },
+      { text: "Instagram Reel", url: "https://www.instagram.com/reel/DWQ0rKkjeqe/" },
+      { text: "YouTube Video", url: "https://youtu.be/jsjW8_46de4" }
+    ]
   },
   {
-    name: "Freelance Projects",
-    role: "Various Clients",
-    description: "Short-form content, YouTube edits, thumbnails, and motion graphics for independent clients.",
-    driveLink: "https://drive.google.com/drive/folders/1d_jPrsh8Q7lWL2z2wNeLbDjdlqF3DfSN?usp=drive_link",
+    name: "REMEDY HOSPITAL PUNE",
+    label: "Remedy Hospital · Healthcare",
+    tag: "Medical · Brand",
+    links: [
+      { text: "Preview Video 1", url: "https://drive.google.com/file/d/11GWaBYB0p_Exdtg_7FGCEKW8PbmO9Yb8/view" },
+      { text: "Preview Video 2", url: "https://drive.google.com/file/d/1eMOaCZf6OgIdwWOobIu1cwi0ZI-53DvC/view" },
+      { text: "Preview Video 3", url: "https://drive.google.com/file/d/1QEOURps_XHlTS4IdkhXgk5lz7mxDfZiN/view" }
+    ]
   },
+  {
+    name: "DR. PRIYANKA PATIL",
+    label: "Dr. Priyanka Patil · Nashik",
+    tag: "Medical · Personal Brand",
+    links: [
+      { text: "Preview Video 1", url: "https://drive.google.com/file/d/1SxNVnjUC3fsfh2dbBG6u27eGj0ivKqdl/view" },
+      { text: "Preview Video 2", url: "https://drive.google.com/file/d/1ILBQYg9dOFMuikGnHdA-YFdOmJhLZT_P/view" },
+      { text: "Preview Video 3", url: "https://drive.google.com/file/d/13iCoucM-_WKe2LXsq_9UlsHxVAHMpnv5/view" }
+    ]
+  },
+  {
+    name: "OTHER WORK",
+    label: "Various Clients",
+    tag: "Gym · Fashion · Lifestyle · Café",
+    links: [
+      { text: "Gym Motivational", url: "https://youtube.com/shorts/vPswiUOVcLg" },
+      { text: "Under25 Reel", url: "https://youtube.com/shorts/lbPF1cufito" },
+      { text: "Intro Edit", url: "https://youtube.com/shorts/eg35evUinI4" },
+      { text: "Kiosk Cafe", url: "https://youtube.com/shorts/I3YpGt-_YXo" },
+      { text: "HAZARD Clothing", url: "https://youtube.com/shorts/TppPp2wQNuw" },
+      { text: "Jewellery Edit", url: "https://youtube.com/shorts/Mj0qvix0Wvc" }
+    ]
+  }
+];
+
+const longFormVideos = [
+  { id: "EMDB7awyR6Y", title: "Ishita Saluja" },
+  { id: "-1KnEc5hmUo", title: "Stylebabe Academy" },
+  { id: "UZodCcoFOPM", title: "Stylebabe Academy" },
+  { id: "jsjW8_46de4", title: "AI Video" },
+  { id: "wf1Azsg8Hac", title: "Vlog" },
 ];
 
 // YouTube videos with thumbnails
@@ -135,6 +180,46 @@ const VideoCard = ({ videoId, label }: { videoId: string; label?: string }) => {
         </div>
       </motion.div>
     </motion.div>
+  );
+};
+
+const LongFormCard = ({ videoId, title }: { videoId: string, title?: string }) => {
+  const [isPlaying, setIsPlaying] = useState(false);
+  
+  if (isPlaying) {
+    return (
+      <div className="relative aspect-video rounded-xl overflow-hidden bg-muted border border-border/50">
+        <iframe
+          src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
+          title={title || "YouTube video"}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          className="w-full h-full border-0"
+        />
+      </div>
+    );
+  }
+
+  return (
+    <div 
+      className="relative aspect-video rounded-xl overflow-hidden bg-muted cursor-pointer group border border-border/50"
+      onClick={() => setIsPlaying(true)}
+    >
+      <img
+        src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
+        alt={title}
+        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        loading="lazy"
+      />
+      <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-300" />
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="w-16 h-16 rounded-full bg-background/80 backdrop-blur-sm text-foreground flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform duration-300">
+          <svg className="w-8 h-8 ml-1" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z" />
+          </svg>
+        </div>
+      </div>
+    </div>
   );
 };
 
@@ -289,7 +374,7 @@ const VideoEditor = () => {
             </p>
           </AnimatedSection>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-5 gap-4">
             {shortVideos.map((video, index) => (
               <AnimatedSection key={video.id} delay={index * 0.04}>
                 <VideoCard videoId={video.id} label={video.label} />
@@ -328,31 +413,39 @@ const VideoEditor = () => {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {clients.map((client, index) => (
               <AnimatedSection key={client.name} delay={index * 0.1}>
-                <motion.a
-                  href={client.driveLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block premium-card p-6 h-full group"
+                <motion.div
+                  className="block premium-card p-6 h-full flex flex-col group/card"
                   whileHover={{ y: -4 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <p className="text-xs text-muted-foreground tracking-wide uppercase mb-3">{client.role}</p>
-                  <h3 className="font-poppins text-base font-medium mb-2 tracking-premium">{client.name}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-4">{client.description}</p>
-                  <span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground group-hover:text-foreground transition-colors">
-                    View portfolio
-                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 17L17 7M17 7H7M17 7v10" />
-                    </svg>
-                  </span>
-                </motion.a>
+                  <p className="text-[10px] text-muted-foreground tracking-widest uppercase mb-3 px-2 py-1 bg-secondary inline-block rounded-md self-start border border-border/50">{client.tag}</p>
+                  <h3 className="font-poppins text-lg font-medium mb-1 tracking-premium group-hover/card:text-foreground transition-colors">{client.name}</h3>
+                  <p className="text-sm text-muted-foreground mb-6">{client.label}</p>
+                  
+                  <div className="mt-auto space-y-2.5">
+                    {client.links.map((link, i) => (
+                      <a 
+                        key={i}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-between text-xs font-medium p-3 rounded-lg bg-background/40 border border-border/40 hover:bg-secondary/60 hover:border-border/80 transition-all group/link"
+                      >
+                        <span className="truncate pr-4 tracking-wide">{link.text}</span>
+                        <svg className="w-4 h-4 opacity-40 group-hover/link:opacity-100 group-hover/link:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                      </a>
+                    ))}
+                  </div>
+                </motion.div>
               </AnimatedSection>
             ))}
           </div>
         </div>
       </section>
 
-      {/* YouTube Thumbnails */}
+      {/* YouTube Thumbnails Section */}
       <section className="section-spacing">
         <div className="container-wide">
           <AnimatedSection>
@@ -393,6 +486,29 @@ const VideoEditor = () => {
                   </motion.div>
                   <p className="text-sm text-muted-foreground mt-3 group-hover:text-foreground transition-colors">{video.title}</p>
                 </a>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Long Form Section */}
+      <section className="section-spacing bg-secondary/10">
+        <div className="container-wide">
+          <AnimatedSection>
+            <p className="text-subtle uppercase tracking-wide-premium mb-4">Long Form</p>
+            <h2 className="font-poppins text-xl md:text-2xl font-light mb-12 tracking-premium">
+              YouTube & Detailed Edits
+            </h2>
+          </AnimatedSection>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
+            {longFormVideos.map((video, index) => (
+              <AnimatedSection key={video.id} delay={index * 0.1}>
+                <div className="flex flex-col gap-3">
+                  <LongFormCard videoId={video.id} title={video.title} />
+                  <p className="text-sm text-foreground/80 font-medium tracking-wide pl-1">{video.title}</p>
+                </div>
               </AnimatedSection>
             ))}
           </div>
