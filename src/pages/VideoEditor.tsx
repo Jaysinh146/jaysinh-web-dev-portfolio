@@ -1,0 +1,521 @@
+import { motion } from "framer-motion";
+import { AnimatedSection } from "@/components/AnimatedSection";
+import { ScrollToTop } from "@/components/ScrollToTop";
+import { LionIcon } from "@/components/LionIcon";
+import profileImage from "@/assets/profile.png";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+
+// All shorts videos for autoplay grid
+const shortVideos = [
+  { id: "lbPF1cufito" },
+  { id: "eg35evUinI4" },
+  { id: "Tl-R1SBWzV0" },
+  { id: "wzz5XLZLfpI" },
+  { id: "TppPp2wQNuw" },
+  { id: "I3YpGt-_YXo" },
+  { id: "DvLbM0ahY4Y", label: "AI Video" },
+  { id: "rzjQygTCkzE" },
+  { id: "vBHGfe8mtAM" },
+  { id: "iSDvMjQBjSA" },
+  { id: "vPswiUOVcLg" },
+];
+
+// Client cards with drive links
+const clients = [
+  {
+    name: "Ucove Digital",
+    role: "Ad Creatives & Reels",
+    description: "Social media ad creatives and promotional video content for digital campaigns.",
+    driveLink: "https://drive.google.com/drive/folders/1d_jPrsh8Q7lWL2z2wNeLbDjdlqF3DfSN?usp=drive_link",
+  },
+  {
+    name: "Monarch Media House",
+    role: "Brand Films & Edits",
+    description: "High-quality brand films, event coverage, and cinematic edits.",
+    driveLink: "https://drive.google.com/drive/folders/1d_jPrsh8Q7lWL2z2wNeLbDjdlqF3DfSN?usp=drive_link",
+  },
+  {
+    name: "SilverBridge360",
+    role: "Social Media Content",
+    description: "Managed and created engaging social media video content and marketing materials.",
+    driveLink: "https://drive.google.com/drive/folders/1d_jPrsh8Q7lWL2z2wNeLbDjdlqF3DfSN?usp=drive_link",
+  },
+  {
+    name: "Freelance Projects",
+    role: "Various Clients",
+    description: "Short-form content, YouTube edits, thumbnails, and motion graphics for independent clients.",
+    driveLink: "https://drive.google.com/drive/folders/1d_jPrsh8Q7lWL2z2wNeLbDjdlqF3DfSN?usp=drive_link",
+  },
+];
+
+// YouTube videos with thumbnails
+const youtubeVideos = [
+  {
+    id: "lbPF1cufito",
+    title: "Short-Form Ad Creative",
+  },
+  {
+    id: "eg35evUinI4",
+    title: "Product Showcase Reel",
+  },
+  {
+    id: "DvLbM0ahY4Y",
+    title: "AI-Powered Video Edit",
+  },
+  {
+    id: "Tl-R1SBWzV0",
+    title: "Brand Promo Short",
+  },
+  {
+    id: "rzjQygTCkzE",
+    title: "Social Media Edit",
+  },
+  {
+    id: "vBHGfe8mtAM",
+    title: "Creative Reel",
+  },
+];
+
+const experience = [
+  {
+    title: "Social Media Manager",
+    company: "SilverBridge360",
+    period: "Jan 2025 – Jan 2026",
+    description: "Managed social media strategy, created video content and marketing campaigns.",
+  },
+  {
+    title: "Video Editor",
+    company: "Monarch Media House",
+    period: "Aug 2025 – Mar 2026",
+    description: "Produced brand films, cinematic edits, and high-quality video content for clients.",
+  },
+  {
+    title: "Freelance Video Editor",
+    company: "Independent",
+    period: "2023 – Present",
+    description: "Creating short-form content, YouTube edits, ad creatives, and motion graphics for various clients globally.",
+  },
+];
+
+const VideoCard = ({ videoId, label }: { videoId: string; label?: string }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <motion.div
+      className="relative aspect-[9/16] rounded-xl overflow-hidden group cursor-pointer bg-muted"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      whileHover={{ scale: 1.02 }}
+      transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+    >
+      <iframe
+        src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1`}
+        title="Video"
+        allow="autoplay; encrypted-media"
+        className="w-full h-full border-0"
+        loading="lazy"
+      />
+      <div className={`absolute inset-0 bg-black/20 transition-opacity duration-300 ${isHovered ? 'opacity-0' : 'opacity-100'}`} />
+      {label && (
+        <div className="absolute top-3 left-3 px-2 py-0.5 bg-foreground/80 text-background text-[10px] uppercase tracking-wider rounded-full backdrop-blur-sm">
+          {label}
+        </div>
+      )}
+      <motion.div
+        className="absolute inset-0 flex items-center justify-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isHovered ? 1 : 0 }}
+        transition={{ duration: 0.2 }}
+      >
+        <div className="w-12 h-12 rounded-full bg-background/90 backdrop-blur-sm flex items-center justify-center">
+          <svg className="w-5 h-5 text-foreground ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z" />
+          </svg>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+};
+
+const VideoEditor = () => {
+  return (
+    <div className="min-h-screen bg-background text-foreground">
+      {/* Navigation */}
+      <motion.nav
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border/50"
+      >
+        <div className="container-wide">
+          <div className="flex items-center justify-between h-16 md:h-20">
+            <Link to="/" className="font-poppins text-sm font-medium tracking-wide flex items-center gap-1.5 group">
+              <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 -ml-5 group-hover:ml-0">
+                <LionIcon size={14} />
+              </span>
+              Jaysinh.
+            </Link>
+            <div className="hidden md:flex items-center gap-8">
+              <Link to="/" className="text-sm text-muted-foreground hover:text-foreground transition-colors link-underline">
+                Engineering
+              </Link>
+              <a href="#showreel" className="text-sm text-muted-foreground hover:text-foreground transition-colors link-underline">
+                Showreel
+              </a>
+              <a href="#clients" className="text-sm text-muted-foreground hover:text-foreground transition-colors link-underline">
+                Clients
+              </a>
+              <a href="#contact" className="text-sm font-medium">
+                Contact
+              </a>
+            </div>
+          </div>
+        </div>
+      </motion.nav>
+
+      {/* Hero */}
+      <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+        <div className="container-wide">
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+            <div className="lg:col-span-7 space-y-8 order-2 lg:order-1">
+              <motion.div
+                initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+              >
+                <p className="text-subtle uppercase tracking-wide-premium mb-8">
+                  Video Editor & Motion Designer
+                </p>
+                <h1 className="text-hero mb-8">
+                  I'm <span className="font-medium">Jaysinh</span>.
+                </h1>
+                <p className="text-hero leading-relaxed">
+                  I craft{" "}
+                  <span className="font-accent text-2xl md:text-3xl lg:text-4xl">cinematic</span>{" "}
+                  short-form content
+                  <br className="hidden md:block" /> that captures attention
+                  <br className="hidden md:block" /> and{" "}
+                  <span className="font-medium">drives engagement</span>.
+                </p>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="flex flex-wrap gap-3 text-subtle pt-4"
+              >
+                {["Premiere Pro", "After Effects", "DaVinci Resolve", "Motion Graphics", "Color Grading"].map((skill, index) => (
+                  <span key={skill} className="flex items-center gap-3">
+                    <span className="tracking-wide">{skill}</span>
+                    {index < 4 && <span className="w-1 h-1 rounded-full bg-muted-foreground/40" />}
+                  </span>
+                ))}
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.45 }}
+                className="pt-2"
+              >
+                <span className="inline-flex items-center gap-2 text-xs tracking-wide text-muted-foreground/70 border border-border/40 rounded-full px-4 py-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-green-500/80 animate-pulse" />
+                  Available for Freelance & Remote Work
+                </span>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+                className="pt-2"
+              >
+                <a href="#contact" className="inline-flex items-center gap-2 text-sm font-medium tracking-wide link-underline">
+                  Let's create together
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </a>
+              </motion.div>
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="lg:col-span-5 order-1 lg:order-2"
+            >
+              <div className="relative max-w-[280px] mx-auto lg:max-w-[320px] lg:ml-auto">
+                <div className="absolute -inset-4 bg-gradient-to-br from-muted-foreground/10 via-muted/20 to-transparent rounded-3xl blur-2xl" />
+                <div className="absolute -inset-2 bg-gradient-to-tr from-transparent via-muted-foreground/5 to-muted/15 rounded-2xl blur-xl" />
+                <div className="absolute inset-0 bg-gradient-to-br from-muted/50 to-transparent rounded-2xl transform rotate-3 scale-105" />
+                <img
+                  src={profileImage}
+                  alt="Jaysinh"
+                  className="relative rounded-2xl w-full object-cover shadow-xl shadow-black/10"
+                  style={{ aspectRatio: "4/5" }}
+                />
+              </div>
+            </motion.div>
+          </div>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 0.6 }}
+          className="absolute bottom-12 left-1/2 -translate-x-1/2 hidden lg:block"
+        >
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+            className="w-px h-12 bg-gradient-to-b from-muted-foreground/40 to-transparent"
+          />
+        </motion.div>
+      </section>
+
+      {/* Video Showreel Grid */}
+      <section id="showreel" className="section-spacing">
+        <div className="container-wide">
+          <AnimatedSection>
+            <p className="text-subtle uppercase tracking-wide-premium mb-4">Showreel</p>
+            <h2 className="font-poppins text-xl md:text-2xl font-light mb-4 tracking-premium">
+              Short-form that <span className="font-accent text-2xl md:text-3xl">stops the scroll</span>
+            </h2>
+            <p className="text-body max-w-lg mb-16">
+              A curated selection of ad creatives, reels, and motion work — designed to convert.
+            </p>
+          </AnimatedSection>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            {shortVideos.map((video, index) => (
+              <AnimatedSection key={video.id} delay={index * 0.04}>
+                <VideoCard videoId={video.id} label={video.label} />
+              </AnimatedSection>
+            ))}
+          </div>
+
+          <AnimatedSection delay={0.3}>
+            <div className="mt-12 text-center">
+              <a
+                href="https://drive.google.com/drive/folders/1d_jPrsh8Q7lWL2z2wNeLbDjdlqF3DfSN?usp=drive_link"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors link-underline"
+              >
+                View full video portfolio
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 17L17 7M17 7H7M17 7v10" />
+                </svg>
+              </a>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Client Cards */}
+      <section id="clients" className="section-spacing bg-secondary/30">
+        <div className="container-wide">
+          <AnimatedSection>
+            <p className="text-subtle uppercase tracking-wide-premium mb-4">Clients</p>
+            <h2 className="font-poppins text-xl md:text-2xl font-light mb-12 tracking-premium">
+              Trusted by brands & creators
+            </h2>
+          </AnimatedSection>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {clients.map((client, index) => (
+              <AnimatedSection key={client.name} delay={index * 0.1}>
+                <motion.a
+                  href={client.driveLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block premium-card p-6 h-full group"
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <p className="text-xs text-muted-foreground tracking-wide uppercase mb-3">{client.role}</p>
+                  <h3 className="font-poppins text-base font-medium mb-2 tracking-premium">{client.name}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-4">{client.description}</p>
+                  <span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground group-hover:text-foreground transition-colors">
+                    View portfolio
+                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M7 17L17 7M17 7H7M17 7v10" />
+                    </svg>
+                  </span>
+                </motion.a>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* YouTube Thumbnails */}
+      <section className="section-spacing">
+        <div className="container-wide">
+          <AnimatedSection>
+            <p className="text-subtle uppercase tracking-wide-premium mb-4">Featured Work</p>
+            <h2 className="font-poppins text-xl md:text-2xl font-light mb-12 tracking-premium">
+              Selected video edits
+            </h2>
+          </AnimatedSection>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {youtubeVideos.map((video, index) => (
+              <AnimatedSection key={video.id} delay={index * 0.08}>
+                <a
+                  href={`https://www.youtube.com/shorts/${video.id}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block"
+                >
+                  <motion.div
+                    className="relative aspect-video rounded-xl overflow-hidden bg-muted"
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <img
+                      src={`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`}
+                      alt={video.title}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-300" />
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="w-14 h-14 rounded-full bg-background/90 backdrop-blur-sm flex items-center justify-center">
+                        <svg className="w-6 h-6 text-foreground ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                      </div>
+                    </div>
+                  </motion.div>
+                  <p className="text-sm text-muted-foreground mt-3 group-hover:text-foreground transition-colors">{video.title}</p>
+                </a>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Experience */}
+      <section className="section-spacing bg-secondary/30">
+        <div className="container-narrow">
+          <AnimatedSection>
+            <p className="text-subtle uppercase tracking-wide-premium mb-4">Experience</p>
+            <h2 className="font-poppins text-xl md:text-2xl font-light mb-12 tracking-premium">
+              My Creative Journey
+            </h2>
+          </AnimatedSection>
+
+          <div className="relative">
+            <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-border to-transparent">
+              <motion.div
+                className="absolute inset-0 w-full bg-gradient-to-b from-foreground/20 via-foreground/40 to-foreground/20"
+                initial={{ scaleY: 0 }}
+                whileInView={{ scaleY: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.5, ease: "easeOut" }}
+                style={{ transformOrigin: "top" }}
+              />
+            </div>
+
+            <div className="space-y-12">
+              {experience.map((item, index) => (
+                <AnimatedSection key={index} delay={index * 0.2}>
+                  <div className={`relative flex items-center gap-6 md:gap-12 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+                    <div className="absolute left-4 md:left-1/2 -translate-x-1/2 z-10">
+                      <motion.div
+                        className="w-3 h-3 rounded-full bg-foreground"
+                        initial={{ scale: 0 }}
+                        whileInView={{ scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.2 + 0.3 }}
+                        style={{ boxShadow: "0 0 10px hsl(var(--foreground) / 0.5)" }}
+                      />
+                    </div>
+                    <div className={`ml-12 md:ml-0 md:w-1/2 ${index % 2 === 0 ? 'md:pr-16 md:text-right' : 'md:pl-16'}`}>
+                      <motion.div className="premium-card p-6" whileHover={{ y: -2 }} transition={{ duration: 0.3 }}>
+                        <p className="text-xs text-muted-foreground tracking-wide uppercase mb-2">{item.period}</p>
+                        <h3 className="font-poppins text-base font-medium mb-1 tracking-premium">{item.title}</h3>
+                        <p className="text-sm text-foreground/80 font-medium mb-2">{item.company}</p>
+                        <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+                      </motion.div>
+                    </div>
+                    <div className="hidden md:block md:w-1/2" />
+                  </div>
+                </AnimatedSection>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section id="contact" className="section-spacing bg-foreground text-background">
+        <div className="container-narrow text-center">
+          <AnimatedSection>
+            <p className="text-sm uppercase tracking-wide-premium mb-6 opacity-60">Let's Talk</p>
+            <h2 className="font-poppins text-2xl md:text-3xl lg:text-4xl font-light mb-6 tracking-premium">
+              Need a video that{" "}
+              <span className="font-accent text-3xl md:text-4xl lg:text-5xl">stands out</span>?
+              <br />
+              Let's make it happen.
+            </h2>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.2}>
+            <motion.a
+              href="mailto:patankararyan7@gmail.com"
+              className="inline-flex items-center gap-2 mt-8 px-8 py-4 bg-background text-foreground rounded-full text-sm font-medium tracking-wide transition-all hover:scale-105"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              Get in touch
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </motion.a>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.3}>
+            <div className="flex flex-wrap justify-center gap-6 md:gap-8 mt-16">
+              <a href="tel:+919561593047" className="text-sm opacity-60 hover:opacity-100 transition-opacity">
+                +91 9561593047
+              </a>
+              <a href="https://x.com/jaysinh146" target="_blank" rel="noopener noreferrer" className="text-sm opacity-60 hover:opacity-100 transition-opacity">
+                Twitter
+              </a>
+              <a href="https://www.linkedin.com/in/jaysinh-patankar-b6a648253/" target="_blank" rel="noopener noreferrer" className="text-sm opacity-60 hover:opacity-100 transition-opacity">
+                LinkedIn
+              </a>
+              <a href="https://www.instagram.com/aryanpatankar146/" target="_blank" rel="noopener noreferrer" className="text-sm opacity-60 hover:opacity-100 transition-opacity">
+                Instagram
+              </a>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-8 border-t border-border/50">
+        <div className="container-wide">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <p className="text-xs text-muted-foreground flex items-center gap-1.5">
+              © {new Date().getFullYear()} Jaysinh. Crafted with intention.
+              <LionIcon size={10} className="opacity-20 hover:opacity-60 transition-opacity" />
+            </p>
+            <p className="text-xs text-muted-foreground">
+              Built with React & Tailwind
+            </p>
+          </div>
+        </div>
+      </footer>
+
+      <ScrollToTop />
+    </div>
+  );
+};
+
+export default VideoEditor;
