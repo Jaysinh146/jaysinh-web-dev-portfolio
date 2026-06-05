@@ -5,14 +5,36 @@ import { LionIcon } from "@/components/LionIcon";
 import profileImage from "@/assets/profile.png";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 
-// All shorts videos for autoplay grid
+// All shorts videos for autoplay grid (5 per row)
 const shortVideos = [
+  // Row 1
   { id: "lbPF1cufito" },
   { id: "eg35evUinI4" },
   { id: "Tl-R1SBWzV0" },
   { id: "wzz5XLZLfpI" },
   { id: "TppPp2wQNuw" },
+  // Row 2 — newly added
+  { id: "TZtdZKZ1XlQ", label: "Allen" },
+  { id: "poaplI90TxA", label: "Imagination" },
+  { id: "qhC-MJH-4HM", label: "Leclerc" },
+  { id: "zp-HdcPpHEM", label: "Class Saathi" },
+  { id: "xj_cGsEGiEc", label: "Ishita" },
+  // Row 3
   { id: "I3YpGt-_YXo" },
   { id: "DvLbM0ahY4Y", label: "AI Video" },
   { id: "rzjQygTCkzE" },
@@ -20,70 +42,80 @@ const shortVideos = [
   { id: "OY7L41xb98E", label: "AI" },
 ];
 
-const clients = [
+type ClientLink = { text: string; url: string };
+type Client = {
+  name: string;
+  label: string;
+  tag: string;
+  reels: string[];
+  links: ClientLink[];
+};
+
+const clients: Client[] = [
   {
-    name: "ISHITA SALUJA",
-    label: "Ishita Saluja · 1.5M Instagram",
+    name: "ALLEN ONLINE",
+    label: "Allen Online · EdTech",
     tag: "Reels · Short Form",
-    links: [
-      { text: "View Drive Folder", url: "https://drive.google.com/drive/folders/1OLgARQPp3TTw7frnIhkAzHvaD5ugUDZ-?usp=sharing" },
-      { text: "Watch on YouTube", url: "https://youtu.be/EMDB7awyR6Y" }
-    ]
+    reels: ["TZtdZKZ1XlQ", "ONdfzpaX2GE"],
+    links: [],
+  },
+  {
+    name: "CLASS SAATHI",
+    label: "Class Saathi by TagHive · EdTech",
+    tag: "Reels · Product",
+    reels: ["zp-HdcPpHEM", "0wRNlsiNBr0", "-vaTByekDSA"],
+    links: [],
   },
   {
     name: "IMAGINATION INC.",
-    label: "Imagination Inc. · Interior Design Studio",
+    label: "Imagination Inc. · Interior Design",
     tag: "Brand Video · Reels",
+    reels: ["poaplI90TxA", "vL5CbhK44uU", "4K7p_WBi0N8"],
     links: [
       { text: "Preview Video 1", url: "https://drive.google.com/file/d/1n1xuUmWPw7es6anW-6B1ibShBknUqC73/view" },
       { text: "Preview Video 2", url: "https://drive.google.com/file/d/1vHuC9SG7hP55a8YfM_nQ07MdItfLAxVQ/view" },
-      { text: "Horizontal Reel", url: "https://drive.google.com/file/d/1ZT9jRem2sA9mosPYuH3E1CfYppdZXyQx/view" }
-    ]
+      { text: "Horizontal Reel", url: "https://drive.google.com/file/d/1ZT9jRem2sA9mosPYuH3E1CfYppdZXyQx/view" },
+    ],
   },
   {
-    name: "VANDAN PANDIT",
-    label: "Vandan Pandit · AI Generated Content",
-    tag: "AI Video · Reels",
+    name: "ISHITA SALUJA",
+    label: "Ishita Saluja · 1.5M Instagram",
+    tag: "Reels · Creator",
+    reels: ["xj_cGsEGiEc"],
     links: [
-      { text: "Preview Video 1", url: "https://drive.google.com/file/d/1_ZtaIi5h946acLblbi3zF6z7J-gdgH6f/view" },
-      { text: "Preview Video 2", url: "https://drive.google.com/file/d/1l4iBp4fTOoF13bnClDchhwvVVvi-t0uI/view" },
-      { text: "Instagram Reel", url: "https://www.instagram.com/reel/DWQ0rKkjeqe/" },
-      { text: "YouTube Video", url: "https://youtu.be/jsjW8_46de4" }
-    ]
+      { text: "View Drive Folder", url: "https://drive.google.com/drive/folders/1OLgARQPp3TTw7frnIhkAzHvaD5ugUDZ-?usp=sharing" },
+      { text: "Watch on YouTube", url: "https://youtu.be/EMDB7awyR6Y" },
+    ],
   },
   {
-    name: "REMEDY HOSPITAL PUNE",
-    label: "Remedy Hospital · Healthcare",
+    name: "REMEDY HOSPITAL",
+    label: "Remedy Hospital Pune · Healthcare",
     tag: "Medical · Brand",
+    reels: [],
     links: [
       { text: "Preview Video 1", url: "https://drive.google.com/file/d/11GWaBYB0p_Exdtg_7FGCEKW8PbmO9Yb8/view" },
       { text: "Preview Video 2", url: "https://drive.google.com/file/d/1eMOaCZf6OgIdwWOobIu1cwi0ZI-53DvC/view" },
-      { text: "Preview Video 3", url: "https://drive.google.com/file/d/1QEOURps_XHlTS4IdkhXgk5lz7mxDfZiN/view" }
-    ]
+      { text: "Preview Video 3", url: "https://drive.google.com/file/d/1QEOURps_XHlTS4IdkhXgk5lz7mxDfZiN/view" },
+    ],
   },
   {
     name: "DR. PRIYANKA PATIL",
     label: "Dr. Priyanka Patil · Nashik",
     tag: "Medical · Personal Brand",
+    reels: [],
     links: [
       { text: "Preview Video 1", url: "https://drive.google.com/file/d/1SxNVnjUC3fsfh2dbBG6u27eGj0ivKqdl/view" },
       { text: "Preview Video 2", url: "https://drive.google.com/file/d/1ILBQYg9dOFMuikGnHdA-YFdOmJhLZT_P/view" },
-      { text: "Preview Video 3", url: "https://drive.google.com/file/d/13iCoucM-_WKe2LXsq_9UlsHxVAHMpnv5/view" }
-    ]
+      { text: "Preview Video 3", url: "https://drive.google.com/file/d/13iCoucM-_WKe2LXsq_9UlsHxVAHMpnv5/view" },
+    ],
   },
   {
     name: "OTHER WORK",
-    label: "Various Clients",
-    tag: "Gym · Fashion · Lifestyle · Café",
-    links: [
-      { text: "Gym Motivational", url: "https://youtube.com/shorts/vPswiUOVcLg" },
-      { text: "Under25 Reel", url: "https://youtube.com/shorts/lbPF1cufito" },
-      { text: "Intro Edit", url: "https://youtube.com/shorts/eg35evUinI4" },
-      { text: "Kiosk Cafe", url: "https://youtube.com/shorts/I3YpGt-_YXo" },
-      { text: "HAZARD Clothing", url: "https://youtube.com/shorts/TppPp2wQNuw" },
-      { text: "Jewellery Edit", url: "https://youtube.com/shorts/Mj0qvix0Wvc" }
-    ]
-  }
+    label: "Charles Leclerc, Gym, Fashion, Café & more",
+    tag: "Mixed · Creative",
+    reels: ["qhC-MJH-4HM", "vPswiUOVcLg", "lbPF1cufito", "eg35evUinI4", "I3YpGt-_YXo", "TppPp2wQNuw", "Mj0qvix0Wvc"],
+    links: [],
+  },
 ];
 
 const longFormVideos = [
@@ -94,32 +126,13 @@ const longFormVideos = [
   { id: "wf1Azsg8Hac", title: "Vlog" },
 ];
 
-// YouTube videos with thumbnails
 const youtubeVideos = [
-  {
-    id: "lbPF1cufito",
-    title: "Short-Form Ad Creative",
-  },
-  {
-    id: "eg35evUinI4",
-    title: "Product Showcase Reel",
-  },
-  {
-    id: "DvLbM0ahY4Y",
-    title: "AI-Powered Video Edit",
-  },
-  {
-    id: "Tl-R1SBWzV0",
-    title: "Brand Promo Short",
-  },
-  {
-    id: "rzjQygTCkzE",
-    title: "Social Media Edit",
-  },
-  {
-    id: "vBHGfe8mtAM",
-    title: "Creative Reel",
-  },
+  { id: "lbPF1cufito", title: "Short-Form Ad Creative" },
+  { id: "eg35evUinI4", title: "Product Showcase Reel" },
+  { id: "DvLbM0ahY4Y", title: "AI-Powered Video Edit" },
+  { id: "Tl-R1SBWzV0", title: "Brand Promo Short" },
+  { id: "rzjQygTCkzE", title: "Social Media Edit" },
+  { id: "vBHGfe8mtAM", title: "Creative Reel" },
 ];
 
 const experience = [
@@ -183,9 +196,9 @@ const VideoCard = ({ videoId, label }: { videoId: string; label?: string }) => {
   );
 };
 
-const LongFormCard = ({ videoId, title }: { videoId: string, title?: string }) => {
+const LongFormCard = ({ videoId, title }: { videoId: string; title?: string }) => {
   const [isPlaying, setIsPlaying] = useState(false);
-  
+
   if (isPlaying) {
     return (
       <div className="relative aspect-video rounded-xl overflow-hidden bg-muted border border-border/50">
@@ -201,7 +214,7 @@ const LongFormCard = ({ videoId, title }: { videoId: string, title?: string }) =
   }
 
   return (
-    <div 
+    <div
       className="relative aspect-video rounded-xl overflow-hidden bg-muted cursor-pointer group border border-border/50"
       onClick={() => setIsPlaying(true)}
     >
@@ -223,7 +236,120 @@ const LongFormCard = ({ videoId, title }: { videoId: string, title?: string }) =
   );
 };
 
+const ClientCard = ({ client, onOpen }: { client: Client; onOpen: () => void }) => {
+  const preview = client.reels[0];
+  const count = client.reels.length + client.links.length;
+
+  return (
+    <motion.button
+      onClick={onOpen}
+      whileHover={{ y: -4 }}
+      transition={{ duration: 0.3 }}
+      className="relative w-full text-left rounded-2xl overflow-hidden border border-border/50 bg-background/60 backdrop-blur-sm group hover:border-border transition-colors"
+    >
+      <div className="relative aspect-[9/12] overflow-hidden bg-muted">
+        {preview ? (
+          <img
+            src={`https://img.youtube.com/vi/${preview}/hqdefault.jpg`}
+            alt={client.name}
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            loading="lazy"
+          />
+        ) : (
+          <div className="w-full h-full bg-gradient-to-br from-muted to-secondary" />
+        )}
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
+        <div className="absolute top-3 left-3 px-2 py-0.5 bg-background/80 text-foreground text-[10px] uppercase tracking-wider rounded-full backdrop-blur-sm border border-border/40">
+          {client.tag}
+        </div>
+        <div className="absolute bottom-0 left-0 right-0 p-4">
+          <h3 className="font-poppins text-sm font-medium tracking-premium mb-1">{client.name}</h3>
+          <p className="text-[11px] text-muted-foreground line-clamp-1">{client.label}</p>
+        </div>
+      </div>
+      <div className="flex items-center justify-between px-4 py-3 border-t border-border/40">
+        <span className="text-[10px] uppercase tracking-widest text-muted-foreground">
+          {count} {count === 1 ? "Item" : "Items"}
+        </span>
+        <span className="inline-flex items-center gap-1 text-[10px] uppercase tracking-widest text-foreground/70 group-hover:text-foreground transition-colors">
+          View
+          <svg className="w-3 h-3 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </span>
+      </div>
+    </motion.button>
+  );
+};
+
+const ClientDialog = ({ client, open, onOpenChange }: { client: Client | null; open: boolean; onOpenChange: (v: boolean) => void }) => {
+  return (
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+        {client && (
+          <>
+            <DialogHeader>
+              <p className="text-[10px] text-muted-foreground tracking-widest uppercase">{client.tag}</p>
+              <DialogTitle className="font-poppins text-xl font-medium tracking-premium">{client.name}</DialogTitle>
+              <DialogDescription>{client.label}</DialogDescription>
+            </DialogHeader>
+
+            {client.reels.length > 0 && (
+              <div className="mt-4">
+                <p className="text-[10px] uppercase tracking-widest text-muted-foreground mb-3">Reels</p>
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+                  {client.reels.map((id) => (
+                    <a
+                      key={id}
+                      href={`https://www.youtube.com/shorts/${id}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block"
+                    >
+                      <VideoCard videoId={id} />
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {client.links.length > 0 && (
+              <div className="mt-6">
+                <p className="text-[10px] uppercase tracking-widest text-muted-foreground mb-3">Links & Drive</p>
+                <div className="grid sm:grid-cols-2 gap-2.5">
+                  {client.links.map((link, i) => (
+                    <a
+                      key={i}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-between text-xs font-medium p-3 rounded-lg bg-secondary/40 border border-border/40 hover:bg-secondary hover:border-border transition-all group/link"
+                    >
+                      <span className="truncate pr-4 tracking-wide">{link.text}</span>
+                      <svg className="w-4 h-4 opacity-40 group-hover/link:opacity-100 group-hover/link:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
+          </>
+        )}
+      </DialogContent>
+    </Dialog>
+  );
+};
+
 const VideoEditor = () => {
+  const [activeClient, setActiveClient] = useState<Client | null>(null);
+  const [dialogOpen, setDialogOpen] = useState(false);
+
+  const openClient = (c: Client) => {
+    setActiveClient(c);
+    setDialogOpen(true);
+  };
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Navigation */}
@@ -400,64 +526,23 @@ const VideoEditor = () => {
         </div>
       </section>
 
-      {/* Client Cards */}
-      <section id="clients" className="section-spacing bg-secondary/30">
+      {/* YouTube Featured (compact, above Clients) */}
+      <section className="py-16 md:py-20">
         <div className="container-wide">
           <AnimatedSection>
-            <p className="text-subtle uppercase tracking-wide-premium mb-4">Clients</p>
-            <h2 className="font-poppins text-xl md:text-2xl font-light mb-12 tracking-premium">
-              Trusted by brands & creators
-            </h2>
+            <div className="flex items-end justify-between mb-8">
+              <div>
+                <p className="text-subtle uppercase tracking-wide-premium mb-2">Featured Work</p>
+                <h2 className="font-poppins text-lg md:text-xl font-light tracking-premium">
+                  Selected edits
+                </h2>
+              </div>
+            </div>
           </AnimatedSection>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {clients.map((client, index) => (
-              <AnimatedSection key={client.name} delay={index * 0.1}>
-                <motion.div
-                  className="block premium-card p-6 h-full flex flex-col group/card"
-                  whileHover={{ y: -4 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <p className="text-[10px] text-muted-foreground tracking-widest uppercase mb-3 px-2 py-1 bg-secondary inline-block rounded-md self-start border border-border/50">{client.tag}</p>
-                  <h3 className="font-poppins text-lg font-medium mb-1 tracking-premium group-hover/card:text-foreground transition-colors">{client.name}</h3>
-                  <p className="text-sm text-muted-foreground mb-6">{client.label}</p>
-                  
-                  <div className="mt-auto space-y-2.5">
-                    {client.links.map((link, i) => (
-                      <a 
-                        key={i}
-                        href={link.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-between text-xs font-medium p-3 rounded-lg bg-background/40 border border-border/40 hover:bg-secondary/60 hover:border-border/80 transition-all group/link"
-                      >
-                        <span className="truncate pr-4 tracking-wide">{link.text}</span>
-                        <svg className="w-4 h-4 opacity-40 group-hover/link:opacity-100 group-hover/link:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                      </a>
-                    ))}
-                  </div>
-                </motion.div>
-              </AnimatedSection>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* YouTube Thumbnails Section */}
-      <section className="section-spacing">
-        <div className="container-wide">
-          <AnimatedSection>
-            <p className="text-subtle uppercase tracking-wide-premium mb-4">Featured Work</p>
-            <h2 className="font-poppins text-xl md:text-2xl font-light mb-12 tracking-premium">
-              Selected video edits
-            </h2>
-          </AnimatedSection>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
             {youtubeVideos.map((video, index) => (
-              <AnimatedSection key={video.id} delay={index * 0.08}>
+              <AnimatedSection key={video.id} delay={index * 0.05}>
                 <a
                   href={`https://www.youtube.com/shorts/${video.id}`}
                   target="_blank"
@@ -465,31 +550,68 @@ const VideoEditor = () => {
                   className="group block"
                 >
                   <motion.div
-                    className="relative aspect-video rounded-xl overflow-hidden bg-muted"
-                    whileHover={{ scale: 1.02 }}
+                    className="relative aspect-video rounded-lg overflow-hidden bg-muted border border-border/40"
+                    whileHover={{ scale: 1.03 }}
                     transition={{ duration: 0.3 }}
                   >
                     <img
-                      src={`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`}
+                      src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`}
                       alt={video.title}
                       className="w-full h-full object-cover"
                       loading="lazy"
                     />
                     <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-300" />
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="w-14 h-14 rounded-full bg-background/90 backdrop-blur-sm flex items-center justify-center">
-                        <svg className="w-6 h-6 text-foreground ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                      <div className="w-10 h-10 rounded-full bg-background/90 backdrop-blur-sm flex items-center justify-center">
+                        <svg className="w-4 h-4 text-foreground ml-0.5" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M8 5v14l11-7z" />
                         </svg>
                       </div>
                     </div>
                   </motion.div>
-                  <p className="text-sm text-muted-foreground mt-3 group-hover:text-foreground transition-colors">{video.title}</p>
+                  <p className="text-[11px] text-muted-foreground mt-2 group-hover:text-foreground transition-colors line-clamp-1">{video.title}</p>
                 </a>
               </AnimatedSection>
             ))}
           </div>
         </div>
+      </section>
+
+      {/* Clients — interactive slider */}
+      <section id="clients" className="section-spacing bg-secondary/30">
+        <div className="container-wide">
+          <AnimatedSection>
+            <div className="flex items-end justify-between mb-10">
+              <div>
+                <p className="text-subtle uppercase tracking-wide-premium mb-4">Clients</p>
+                <h2 className="font-poppins text-xl md:text-2xl font-light tracking-premium">
+                  Trusted by brands & creators
+                </h2>
+              </div>
+              <p className="hidden md:block text-xs text-muted-foreground">
+                Tap a card to see all reels →
+              </p>
+            </div>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.1}>
+            <Carousel opts={{ align: "start", loop: false }} className="w-full">
+              <CarouselContent className="-ml-4">
+                {clients.map((client) => (
+                  <CarouselItem key={client.name} className="pl-4 basis-3/4 sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
+                    <ClientCard client={client} onOpen={() => openClient(client)} />
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <div className="hidden md:block">
+                <CarouselPrevious className="-left-4" />
+                <CarouselNext className="-right-4" />
+              </div>
+            </Carousel>
+          </AnimatedSection>
+        </div>
+
+        <ClientDialog client={activeClient} open={dialogOpen} onOpenChange={setDialogOpen} />
       </section>
 
       {/* Long Form Section */}
