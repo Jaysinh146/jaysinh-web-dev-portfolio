@@ -126,14 +126,6 @@ const longFormVideos = [
   { id: "wf1Azsg8Hac", title: "Vlog" },
 ];
 
-const youtubeVideos = [
-  { id: "lbPF1cufito", title: "Short-Form Ad Creative" },
-  { id: "eg35evUinI4", title: "Product Showcase Reel" },
-  { id: "DvLbM0ahY4Y", title: "AI-Powered Video Edit" },
-  { id: "Tl-R1SBWzV0", title: "Brand Promo Short" },
-  { id: "rzjQygTCkzE", title: "Social Media Edit" },
-  { id: "vBHGfe8mtAM", title: "Creative Reel" },
-];
 
 const experience = [
   {
