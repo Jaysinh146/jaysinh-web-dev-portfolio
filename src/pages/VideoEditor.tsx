@@ -126,14 +126,6 @@ const longFormVideos = [
   { id: "wf1Azsg8Hac", title: "Vlog" },
 ];
 
-const youtubeVideos = [
-  { id: "lbPF1cufito", title: "Short-Form Ad Creative" },
-  { id: "eg35evUinI4", title: "Product Showcase Reel" },
-  { id: "DvLbM0ahY4Y", title: "AI-Powered Video Edit" },
-  { id: "Tl-R1SBWzV0", title: "Brand Promo Short" },
-  { id: "rzjQygTCkzE", title: "Social Media Edit" },
-  { id: "vBHGfe8mtAM", title: "Creative Reel" },
-];
 
 const experience = [
   {
@@ -405,9 +397,9 @@ const VideoEditor = () => {
                   I craft{" "}
                   <span className="font-accent text-2xl md:text-3xl lg:text-4xl">cinematic</span>{" "}
                   short-form content
-                  <br className="hidden md:block" /> that captures attention
-                  <br className="hidden md:block" /> and{" "}
-                  <span className="font-medium">drives engagement</span>.
+                  <br className="hidden md:block" /> that captures attention and drives
+                  <br className="hidden md:block" />{" "}
+                  <span className="font-medium">engagement</span>.
                 </p>
               </motion.div>
 
@@ -526,56 +518,6 @@ const VideoEditor = () => {
         </div>
       </section>
 
-      {/* YouTube Featured (compact, above Clients) */}
-      <section className="py-16 md:py-20">
-        <div className="container-wide">
-          <AnimatedSection>
-            <div className="flex items-end justify-between mb-8">
-              <div>
-                <p className="text-subtle uppercase tracking-wide-premium mb-2">Featured Work</p>
-                <h2 className="font-poppins text-lg md:text-xl font-light tracking-premium">
-                  Selected edits
-                </h2>
-              </div>
-            </div>
-          </AnimatedSection>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-            {youtubeVideos.map((video, index) => (
-              <AnimatedSection key={video.id} delay={index * 0.05}>
-                <a
-                  href={`https://www.youtube.com/shorts/${video.id}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group block"
-                >
-                  <motion.div
-                    className="relative aspect-video rounded-lg overflow-hidden bg-muted border border-border/40"
-                    whileHover={{ scale: 1.03 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <img
-                      src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`}
-                      alt={video.title}
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all duration-300" />
-                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="w-10 h-10 rounded-full bg-background/90 backdrop-blur-sm flex items-center justify-center">
-                        <svg className="w-4 h-4 text-foreground ml-0.5" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M8 5v14l11-7z" />
-                        </svg>
-                      </div>
-                    </div>
-                  </motion.div>
-                  <p className="text-[11px] text-muted-foreground mt-2 group-hover:text-foreground transition-colors line-clamp-1">{video.title}</p>
-                </a>
-              </AnimatedSection>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Clients — interactive slider */}
       <section id="clients" className="section-spacing bg-secondary/30">
