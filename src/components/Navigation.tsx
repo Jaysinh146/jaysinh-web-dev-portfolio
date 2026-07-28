@@ -5,6 +5,8 @@ import { LionIcon } from "./LionIcon";
 
 export const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
 
   useEffect(() => {
     const handleScroll = () => {
