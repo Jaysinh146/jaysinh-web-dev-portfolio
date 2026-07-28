@@ -150,43 +150,68 @@ const experience = [
 
 const VideoCard = ({ videoId, label }: { videoId: string; label?: string }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [open, setOpen] = useState(false);
 
   return (
-    <motion.div
-      className="relative aspect-[9/16] rounded-xl overflow-hidden group cursor-pointer bg-muted"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      whileHover={{ scale: 1.02 }}
-      transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-    >
-      <iframe
-        src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1`}
-        title="Video"
-        allow="autoplay; encrypted-media"
-        className="w-full h-full border-0"
-        loading="lazy"
-      />
-      <div className={`absolute inset-0 bg-black/20 transition-opacity duration-300 ${isHovered ? 'opacity-0' : 'opacity-100'}`} />
-      {label && (
-        <div className="absolute top-3 left-3 px-2 py-0.5 bg-foreground/80 text-background text-[10px] uppercase tracking-wider rounded-full backdrop-blur-sm">
-          {label}
-        </div>
-      )}
+    <>
       <motion.div
-        className="absolute inset-0 flex items-center justify-center"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: isHovered ? 1 : 0 }}
-        transition={{ duration: 0.2 }}
+        className="relative aspect-[9/16] rounded-xl overflow-hidden group cursor-pointer bg-muted"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        onClick={() => setOpen(true)}
+        whileHover={{ scale: 1.02 }}
+        transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
       >
-        <div className="w-12 h-12 rounded-full bg-background/90 backdrop-blur-sm flex items-center justify-center">
-          <svg className="w-5 h-5 text-foreground ml-0.5" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M8 5v14l11-7z" />
-          </svg>
-        </div>
+        <iframe
+          src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1`}
+          title="Video"
+          allow="autoplay; encrypted-media"
+          className="w-full h-full border-0 pointer-events-none"
+          loading="lazy"
+        />
+        <div className={`absolute inset-0 bg-black/20 transition-opacity duration-300 ${isHovered ? 'opacity-0' : 'opacity-100'}`} />
+        {label && (
+          <div className="absolute top-3 left-3 px-2 py-0.5 bg-foreground/80 text-background text-[10px] uppercase tracking-wider rounded-full backdrop-blur-sm">
+            {label}
+          </div>
+        )}
+        <motion.div
+          className="absolute inset-0 flex items-center justify-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isHovered ? 1 : 0 }}
+          transition={{ duration: 0.2 }}
+        >
+          <div className="w-12 h-12 rounded-full bg-background/90 backdrop-blur-sm flex items-center justify-center">
+            <svg className="w-5 h-5 text-foreground ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </div>
+        </motion.div>
       </motion.div>
-    </motion.div>
+
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent className="max-w-[380px] p-0 overflow-hidden bg-background border-border/50">
+          <DialogHeader className="sr-only">
+            <DialogTitle>{label || "Video"}</DialogTitle>
+            <DialogDescription>Video player</DialogDescription>
+          </DialogHeader>
+          <div className="aspect-[9/16] w-full bg-black">
+            {open && (
+              <iframe
+                src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&playsinline=1`}
+                title={label || "Video"}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full h-full border-0"
+              />
+            )}
+          </div>
+        </DialogContent>
+      </Dialog>
+    </>
   );
 };
+
 
 const LongFormCard = ({ videoId, title }: { videoId: string; title?: string }) => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -336,6 +361,8 @@ const ClientDialog = ({ client, open, onOpenChange }: { client: Client | null; o
 const VideoEditor = () => {
   const [activeClient, setActiveClient] = useState<Client | null>(null);
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
 
   const openClient = (c: Client) => {
     setActiveClient(c);
@@ -373,8 +400,42 @@ const VideoEditor = () => {
                 Contact
               </a>
             </div>
+
+            {/* Mobile menu button */}
+            <button
+              className="md:hidden p-2"
+              aria-label="Toggle menu"
+              aria-expanded={menuOpen}
+              onClick={() => setMenuOpen((v) => !v)}
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {menuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
           </div>
+
+          {menuOpen && (
+            <div className="md:hidden pb-6 flex flex-col gap-4 border-t border-border/50 pt-4">
+              <Link to="/" onClick={() => setMenuOpen(false)} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                Engineering
+              </Link>
+              <a href="#showreel" onClick={() => setMenuOpen(false)} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                Showreel
+              </a>
+              <a href="#clients" onClick={() => setMenuOpen(false)} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                Clients
+              </a>
+              <a href="#contact" onClick={() => setMenuOpen(false)} className="text-sm font-medium">
+                Contact
+              </a>
+            </div>
+          )}
         </div>
+
       </motion.nav>
 
       {/* Hero */}
