@@ -361,6 +361,8 @@ const ClientDialog = ({ client, open, onOpenChange }: { client: Client | null; o
 const VideoEditor = () => {
   const [activeClient, setActiveClient] = useState<Client | null>(null);
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
 
   const openClient = (c: Client) => {
     setActiveClient(c);
