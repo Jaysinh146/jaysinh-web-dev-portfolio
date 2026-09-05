@@ -136,16 +136,22 @@ const longFormVideos = [
 
 const experience = [
   {
-    title: "Social Media Manager",
-    company: "SilverBridge360",
-    period: "Jan 2025 – Jan 2026",
-    description: "Managed social media strategy, created video content and marketing campaigns.",
+    title: "AI Video Editor",
+    company: "Triplespeed",
+    period: "Aug 2026 – Present",
+    description: "App studio making products used by millions worldwide. Editing AI-driven video content at scale.",
   },
   {
     title: "Video Editor",
     company: "Monarch Media House",
     period: "Aug 2025 – Mar 2026",
     description: "Produced brand films, cinematic edits, and high-quality video content for clients.",
+  },
+  {
+    title: "Social Media Manager",
+    company: "SilverBridge360",
+    period: "Jan 2025 – Jan 2026",
+    description: "Managed social media strategy, created video content and marketing campaigns.",
   },
   {
     title: "Freelance Video Editor",
