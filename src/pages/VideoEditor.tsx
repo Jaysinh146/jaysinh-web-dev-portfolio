@@ -44,6 +44,8 @@ const shortVideos = [
   { id: "rzjQygTCkzE" },
   { id: "vBHGfe8mtAM" },
   { id: "OY7L41xb98E", label: "AI" },
+  { id: "vpFaK3kfog4" },
+  { id: "4K7p_WBi0N8", label: "Imagination" },
 ];
 
 type ClientLink = { text: string; url: string };
