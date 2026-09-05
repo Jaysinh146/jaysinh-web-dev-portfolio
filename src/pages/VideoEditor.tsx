@@ -123,6 +123,7 @@ const clients: Client[] = [
 ];
 
 const longFormVideos = [
+  { id: "Jp7DD4isQLU", title: "AI Film" },
   { id: "EMDB7awyR6Y", title: "Ishita Saluja" },
   { id: "-1KnEc5hmUo", title: "Stylebabe Academy" },
   { id: "UZodCcoFOPM", title: "Stylebabe Academy" },
