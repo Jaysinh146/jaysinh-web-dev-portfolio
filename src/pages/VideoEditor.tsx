@@ -22,21 +22,25 @@ import {
 
 // All shorts videos for autoplay grid (5 per row)
 const shortVideos = [
-  // Row 1
+  // Row 1 — fresh work first
+  { id: "LYPzTWDo0CE", label: "Ishita" },
+  { id: "PGQMpsy0u9w", label: "NRI" },
+  { id: "F9K17y0YkrY", label: "NRI" },
   { id: "lbPF1cufito" },
   { id: "eg35evUinI4" },
+  // Row 2
   { id: "Tl-R1SBWzV0" },
   { id: "wzz5XLZLfpI" },
   { id: "TppPp2wQNuw" },
-  // Row 2 — newly added
   { id: "TZtdZKZ1XlQ", label: "Allen" },
   { id: "poaplI90TxA", label: "Imagination" },
+  // Row 3
   { id: "qhC-MJH-4HM", label: "Leclerc" },
   { id: "zp-HdcPpHEM", label: "Class Saathi" },
   { id: "xj_cGsEGiEc", label: "Ishita" },
-  // Row 3
   { id: "I3YpGt-_YXo" },
   { id: "DvLbM0ahY4Y", label: "AI Video" },
+  // Row 4
   { id: "rzjQygTCkzE" },
   { id: "vBHGfe8mtAM" },
   { id: "OY7L41xb98E", label: "AI" },
@@ -119,6 +123,7 @@ const clients: Client[] = [
 ];
 
 const longFormVideos = [
+  { id: "Jp7DD4isQLU", title: "AI Film" },
   { id: "EMDB7awyR6Y", title: "Ishita Saluja" },
   { id: "-1KnEc5hmUo", title: "Stylebabe Academy" },
   { id: "UZodCcoFOPM", title: "Stylebabe Academy" },
