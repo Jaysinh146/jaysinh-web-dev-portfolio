@@ -3,6 +3,9 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { LionIcon } from "@/components/LionIcon";
 import profileImage from "@/assets/profile.png";
+import triplespeedMark from "@/assets/triplespeed-mark.png.asset.json";
+import monarchLogo from "@/assets/monarch-media-house.png.asset.json";
+import silverbridgeLogo from "@/assets/silverbridge-360.png.asset.json";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
@@ -137,27 +140,39 @@ const longFormVideos = [
 const experience = [
   {
     title: "AI Video Editor",
-    company: "Triplespeed",
+    company: "",
     period: "Aug 2026 – Present",
     description: "App studio making products used by millions worldwide. Editing AI-driven video content at scale.",
+    logo: triplespeedMark.url,
+    logoAlt: "Triplespeed",
+    logoClassName: "h-9 w-auto",
   },
   {
     title: "Video Editor",
     company: "Monarch Media House",
     period: "Aug 2025 – Mar 2026",
     description: "Produced brand films, cinematic edits, and high-quality video content for clients.",
+    logo: monarchLogo.url,
+    logoAlt: "Monarch Media House",
+    logoClassName: "h-10 w-auto brightness-0",
   },
   {
     title: "Social Media Manager",
     company: "SilverBridge360",
     period: "Jan 2025 – Jan 2026",
     description: "Managed social media strategy, created video content and marketing campaigns.",
+    logo: silverbridgeLogo.url,
+    logoAlt: "SilverBridge360",
+    logoClassName: "h-12 w-12 rounded-md object-cover",
   },
   {
     title: "Freelance Video Editor",
     company: "Independent",
     period: "2023 – Present",
     description: "Creating short-form content, YouTube edits, ad creatives, and motion graphics for various clients globally.",
+    logo: null,
+    logoAlt: "",
+    logoClassName: "",
   },
 ];
 
@@ -691,9 +706,16 @@ const VideoEditor = () => {
                     </div>
                     <div className={`ml-12 md:ml-0 md:w-1/2 ${index % 2 === 0 ? 'md:pr-16 md:text-right' : 'md:pl-16'}`}>
                       <motion.div className="premium-card p-6" whileHover={{ y: -2 }} transition={{ duration: 0.3 }}>
+                        {item.logo && (
+                          <div className={`flex mb-5 ${index % 2 === 0 ? "md:justify-end" : "md:justify-start"}`}>
+                            <div className="h-14 min-w-14 px-2.5 flex items-center justify-center rounded-lg border border-border/50 bg-background">
+                              <img src={item.logo} alt={item.logoAlt} className={item.logoClassName} loading="lazy" />
+                            </div>
+                          </div>
+                        )}
                         <p className="text-xs text-muted-foreground tracking-wide uppercase mb-2">{item.period}</p>
                         <h3 className="font-poppins text-base font-medium mb-1 tracking-premium">{item.title}</h3>
-                        <p className="text-sm text-foreground/80 font-medium mb-2">{item.company}</p>
+                        {item.company && <p className="text-sm text-foreground/80 font-medium mb-2">{item.company}</p>}
                         <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
                       </motion.div>
                     </div>
