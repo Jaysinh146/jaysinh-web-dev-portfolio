@@ -456,7 +456,7 @@ const VideoEditor = () => {
                 transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
               >
                 <p className="text-subtle uppercase tracking-wide-premium mb-8">
-                  Video Editor & Motion Designer
+                  Video Editor · Motion Designer · AI Artist
                 </p>
                 <h1 className="text-hero mb-8">
                   I'm <span className="font-medium">Jaysinh</span>.
