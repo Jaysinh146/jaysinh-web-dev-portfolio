@@ -1,4 +1,4 @@
-# Senior AI Creative Portfolio Redesign
+# AI Creative Portfolio Redesign
 
 ## Goal
 Redesign only `/video-editor` into a more interactive, editorial portfolio inspired by the Grower reference, while retaining Jaysinh’s existing videos, clients, contact details, and experience history. Reposition the page for AI Artist, AI Video Editor, Creative Lead, and Senior AI Director opportunities through measurable results and creative leadership.
