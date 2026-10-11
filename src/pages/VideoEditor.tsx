@@ -3,9 +3,9 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { LionIcon } from "@/components/LionIcon";
 import profileImage from "@/assets/profile.png";
-import triplespeedMark from "@/assets/triplespeed-mark.png.asset.json";
-import monarchLogo from "@/assets/monarch-media-house.png.asset.json";
-import silverbridgeLogo from "@/assets/silverbridge-360.png.asset.json";
+import triplespeedMark from "@/assets/triplespeed-mark.png";
+import monarchLogo from "@/assets/monarch-media-house.png";
+import silverbridgeLogo from "@/assets/silverbridge-360.png";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
