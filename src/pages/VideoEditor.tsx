@@ -398,7 +398,7 @@ const VideoEditor = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground font-poppins">
       {/* Navigation */}
       <motion.nav
         initial={{ opacity: 0, y: -20 }}
@@ -477,14 +477,14 @@ const VideoEditor = () => {
                 transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
               >
                 <p className="text-subtle uppercase tracking-wide-premium mb-8">
-                  Video Editor · Motion Designer · AI Artist
+                  AI Video Creator · Growth Video Editor
                 </p>
                 <h1 className="text-hero mb-8">
                   I'm <span className="font-medium">Jaysinh</span>.
                 </h1>
                 <p className="text-hero leading-relaxed">
                   I craft{" "}
-                  <span className="font-accent text-2xl md:text-3xl lg:text-4xl">cinematic</span>{" "}
+                  <span className="font-medium text-2xl md:text-3xl lg:text-4xl">AI-powered</span>{" "}
                   short-form content
                   <br className="hidden md:block" /> that captures attention and drives
                   <br className="hidden md:block" />{" "}
@@ -514,7 +514,7 @@ const VideoEditor = () => {
               >
                 <span className="inline-flex items-center gap-2 text-xs tracking-wide text-muted-foreground/70 border border-border/40 rounded-full px-4 py-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-green-500/80 animate-pulse" />
-                  Available for Freelance & Remote Work
+                  Open to Remote Work · Willing to Relocate to Dubai
                 </span>
               </motion.div>
 
@@ -568,16 +568,46 @@ const VideoEditor = () => {
         </motion.div>
       </section>
 
+      {/* Results */}
+      <section className="pb-16 md:pb-24">
+        <div className="container-wide">
+          <AnimatedSection>
+            <div className="border-y border-border/60 py-8 md:py-10">
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-9">
+                {[
+                  { value: "500+", label: "AI ads created" },
+                  { value: "$500K", label: "Ad spend supported" },
+                  { value: "10M+", label: "Organic views generated" },
+                  { value: "$50M+", label: "ARR brands supported" },
+                ].map((stat, index) => (
+                  <motion.div
+                    key={stat.label}
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.08 }}
+                    className={index > 0 ? "lg:border-l lg:border-border/60 lg:pl-8" : ""}
+                  >
+                    <p className="text-2xl md:text-3xl font-medium mb-2">{stat.value}</p>
+                    <p className="text-xs md:text-sm text-muted-foreground">{stat.label}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
       {/* Video Showreel Grid */}
       <section id="showreel" className="section-spacing">
         <div className="container-wide">
           <AnimatedSection>
             <p className="text-subtle uppercase tracking-wide-premium mb-4">Showreel</p>
             <h2 className="font-poppins text-xl md:text-2xl font-light mb-4 tracking-premium">
-              Short-form that <span className="font-accent text-2xl md:text-3xl">stops the scroll</span>
+              AI video and edits that <span className="font-medium text-2xl md:text-3xl">drive growth</span>
             </h2>
             <p className="text-body max-w-lg mb-16">
-              A curated selection of ad creatives, reels, and motion work — designed to convert.
+              A curated selection of organic creative, cinematic AI work, reels, and motion-led edits built to earn attention.
             </p>
           </AnimatedSection>
 
@@ -590,7 +620,10 @@ const VideoEditor = () => {
           </div>
 
           <AnimatedSection delay={0.3}>
-            <div className="mt-12 text-center">
+            <div className="mt-12 text-center space-y-6">
+              <p className="max-w-2xl mx-auto text-xs md:text-sm text-muted-foreground leading-relaxed border border-border/50 bg-background/50 px-5 py-4 rounded-lg">
+                Due to company and client confidentiality, paid AI ad creatives are not displayed publicly in this portfolio.
+              </p>
               <a
                 href="https://drive.google.com/drive/folders/1d_jPrsh8Q7lWL2z2wNeLbDjdlqF3DfSN?usp=drive_link"
                 target="_blank"
@@ -735,7 +768,7 @@ const VideoEditor = () => {
             <p className="text-sm uppercase tracking-wide-premium mb-6 opacity-60">Let's Talk</p>
             <h2 className="font-poppins text-2xl md:text-3xl lg:text-4xl font-light mb-6 tracking-premium">
               Need a video that{" "}
-              <span className="font-accent text-3xl md:text-4xl lg:text-5xl">stands out</span>?
+               <span className="font-medium text-3xl md:text-4xl lg:text-5xl">stands out</span>?
               <br />
               Let's make it happen.
             </h2>
