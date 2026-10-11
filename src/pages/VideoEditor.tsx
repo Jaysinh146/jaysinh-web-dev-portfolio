@@ -3,9 +3,9 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { LionIcon } from "@/components/LionIcon";
 import profileImage from "@/assets/profile.png";
-import triplespeedMark from "@/assets/triplespeed-mark.png.asset.json";
-import monarchLogo from "@/assets/monarch-media-house.png.asset.json";
-import silverbridgeLogo from "@/assets/silverbridge-360.png.asset.json";
+import triplespeedMark from "@/assets/triplespeed-mark.png";
+import monarchLogo from "@/assets/monarch-media-house.png";
+import silverbridgeLogo from "@/assets/silverbridge-360.png";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
@@ -143,7 +143,7 @@ const experience = [
     company: "",
     period: "Aug 2026 – Present",
     description: "App studio making products used by millions worldwide. Editing AI-driven video content at scale.",
-    logo: triplespeedMark.url,
+    logo: triplespeedMark,
     logoAlt: "Triplespeed",
     logoClassName: "h-9 w-auto",
   },
@@ -152,7 +152,7 @@ const experience = [
     company: "Monarch Media House",
     period: "Aug 2025 – Mar 2026",
     description: "Produced brand films, cinematic edits, and high-quality video content for clients.",
-    logo: monarchLogo.url,
+    logo: monarchLogo,
     logoAlt: "Monarch Media House",
     logoClassName: "h-10 w-auto brightness-0",
   },
@@ -161,7 +161,7 @@ const experience = [
     company: "SilverBridge360",
     period: "Jan 2025 – Jan 2026",
     description: "Managed social media strategy, created video content and marketing campaigns.",
-    logo: silverbridgeLogo.url,
+    logo: silverbridgeLogo,
     logoAlt: "SilverBridge360",
     logoClassName: "h-12 w-12 rounded-md object-cover",
   },
@@ -484,7 +484,7 @@ const VideoEditor = () => {
                 </h1>
                 <p className="text-hero leading-relaxed">
                   I craft{" "}
-                  <span className="font-medium text-2xl md:text-3xl lg:text-4xl">AI-powered</span>{" "}
+                  <span className="font-medium">AI-powered</span>{" "}
                   short-form content
                   <br className="hidden md:block" /> that captures attention and drives
                   <br className="hidden md:block" />{" "}
@@ -604,7 +604,7 @@ const VideoEditor = () => {
           <AnimatedSection>
             <p className="text-subtle uppercase tracking-wide-premium mb-4">Showreel</p>
             <h2 className="font-poppins text-xl md:text-2xl font-light mb-4 tracking-premium">
-              AI video and edits that <span className="font-medium text-2xl md:text-3xl">drive growth</span>
+              AI video and edits that <span className="font-medium">drive growth</span>
             </h2>
             <p className="text-body max-w-lg mb-16">
               A curated selection of organic creative, cinematic AI work, reels, and motion-led edits built to earn attention.
@@ -768,7 +768,7 @@ const VideoEditor = () => {
             <p className="text-sm uppercase tracking-wide-premium mb-6 opacity-60">Let's Talk</p>
             <h2 className="font-poppins text-2xl md:text-3xl lg:text-4xl font-light mb-6 tracking-premium">
               Need a video that{" "}
-               <span className="font-medium text-3xl md:text-4xl lg:text-5xl">stands out</span>?
+               <span className="font-medium">stands out</span>?
               <br />
               Let's make it happen.
             </h2>
