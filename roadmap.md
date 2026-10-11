@@ -1,8 +1,9 @@
 # Roadmap
 
 - [x] Add Triplespeed, Monarch Media House, and SilverBridge360 logos to video-editing experience cards.
-- [ ] Redesign `/video-editor` with the interactive editorial feel of the Grower reference while preserving Jaysinh's identity.
-- [ ] Reframe the page for AI Artist, AI Video Editor, Creative Lead, and AI Creative Director roles.
-- [ ] Add outcome-led proof: $100K+ AI-creative ad spend, 500+ ads tested, 10M+ organic views, and 1M+ creator/brand audiences.
-- [ ] Add AI creative capabilities, models, tools, and pipeline expertise supplied by Jaysinh.
+- [ ] Restore the earlier `/video-editor` design, including Jaysinh's photo and autoplaying portfolio videos.
+- [ ] Reframe the page around AI Video Creator + Growth Video Editor roles; do not use “Senior.”
+- [ ] Add a post-hero proof strip: 500+ AI ads made, $500K ad spend, 10M+ organic views, brands doing $50M+ ARR.
+- [ ] Add availability for Dubai relocation or remote work.
+- [ ] Add a confidentiality note explaining why AI ad videos are not included.
 - [ ] Verify desktop and mobile presentation, interactions, and preview health.
